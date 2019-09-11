@@ -1,26 +1,11 @@
-<?php
-
-$irPHP = 'ir PHP';
-$metai = date('Y');
-$menuo = date('F');
-$diena = date('d');
-
-
-$metais = date('Y', strtotime('+1 year'));
-$rytojus = date('Y.m.d', strtotime('+1 day'));
-$laikas = date('H:m:s', strtotime('-1 hour'));
-
-?>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PHP lydės ir <?php print$rytojus; ?></title>
+    <title>PHP lydės ir <?php print date('Y.m.d', strtotime('+' . rand(1, 10) . 'year')); ?></title>
 </head>
 <body>
-<h1>Jonas - PHP su manim buvo ir <?php print $laikas; ?> </h1>
-<h1>Jonas - HTML ir <?php print $irPHP; ?> asas jau nuo <?php print $metai; ?> metų. </h1>
-<p> Viskas prasidėjo <?php print $menuo; ?> mėnesio, <?php print $diena; ?> dieną!</p>
-<p> <?php print $metai ?> ne už kalnų!</p>
+<h1>Jonas - Galbūt turėsiu <?php print  rand(1, 5); ?> </h1>
+<p> Trump'as nebebus prezidentu: <?php print date('Y.m.d', strtotime('+ ' . rand(2, 10) . 'year')); ?> </p>
 </body>
 </html>
 
