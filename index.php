@@ -1,20 +1,17 @@
 <?php
 
-$graza1 = rand(1, 100);
-$graza2 = rand(101, 200);
-$skola = rand(201, 300);
-
+$siusklines_turis = 40;
+$siuskliu_turis_per_d = 15;
+$max_kaupo_turis = rand(1, 20);
+$likesLaikas = ($siusklines_turis + $max_kaupo_turis) / $siuskliu_turis_per_d;
+$diena = date('Y-m-d', strtotime(+$likesLaikas . 'day'));
+print $likesLaikas;
 ?>
 <hmtl>
     <head>
         <meta charset="UTF-8">
     </head>
     <body>
-        <div>
-            <h1>Skolos skaičiuoklė</h1>
-            <h3>Jei paėmei <?php print $skola; ?> eurų</h3>
-            <h3> su dviem kabančiais grąžinsi <?php print $graza2; ?> </h3>
-            <h3> su vienu kabančiu grąžinsi <?php print $graza1; ?>.</h3>
-        </div>
+        <p> Po <?php print $diena; ?> pirk gėlių ir šampano, jeigu nori išvengti konflikto.</p>
     </body>
 </hmtl>
