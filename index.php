@@ -6,6 +6,7 @@ $max_kaupo_turis = rand(1, 20);
 $likesLaikas = ($siusklines_turis + $max_kaupo_turis) / $siuskliu_turis_per_d;
 $diena = date('Y-m-d', strtotime(+$likesLaikas . 'day'));
 print $likesLaikas;
+
 ?>
 <hmtl>
     <head>
