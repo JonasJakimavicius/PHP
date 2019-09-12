@@ -12,7 +12,7 @@ $data = date('Y.m.d', strtotime(+floor($dienos) . 'day'));
         <meta charset="UTF-8">
     </head>
     <body>
-        <p>Po <?php print floor($dienos); ?>  dienų (<?php print $data; ?>)pirk gėlių ir šampano, jeigu nori išvengti
+        <p>Po <?php print floor($dienos); ?> dienų (<?php print $data; ?>)pirk gėlių ir šampano, jeigu nori išvengti
             konflikto.
         </p>
     </body>
