@@ -2,7 +2,6 @@
 
 $img = 'https://image.shutterstock.com/image-photo/beautiful-water-drop-on-dandelion-260nw-789676552.jpg';
 
-
 ?>
 <hmtl>
     <head>
