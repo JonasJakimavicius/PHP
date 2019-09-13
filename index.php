@@ -1,21 +1,22 @@
 <?php
 
-$siusklines_turis = 40;
-$siuskliu_turis_per_d = 15;
-$max_kaupo_turis = rand(1, 20);
-$dienos = floor(($siusklines_turis + $max_kaupo_turis) / $siuskliu_turis_per_d);
-$data = date('Y.m.d', strtotime('+' . $dienos . 'days'));
-$atsakymas=$dienos . ' dienų (' . $data . ')';
-
+$distance = rand(1, 100);
+$consumption = 7.5;
+$price_1 = 1.3;
+$fuel_total = $distance * $consumption;
+$price_trip = $fuel_total * $price_1;
+$nuvaziuotas_kelias = 'Nuvažiuota distancija: ' . $distance . ' km.';
+$kuro_sanaudos = 'Sunaudota ' . $fuel_total . ' l. kuro.';
+$islaidos = 'Kaina ' . $price_trip . ' pinigų';
 ?>
 <hmtl>
     <head>
         <meta charset="UTF-8">
     </head>
     <body>
-        <p>
-            Po <?php print $atsakymas; ?> pirk gėlių ir šampano, jeigu nori
-            išvengti konflikto.
-        </p>
+        <h1>Kelionės skaičiuoklė</h1>
+        <li><?php print $nuvaziuotas_kelias; ?></li>
+        <li><?php print $kuro_sanaudos; ?></li>
+        <li><?php print $islaidos; ?></li>
     </body>
 </hmtl>
