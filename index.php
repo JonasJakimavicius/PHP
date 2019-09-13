@@ -1,37 +1,27 @@
 <?php
 
-$distance = rand(1, 100);
-$consumption = 7.5;
-$price_1 = 1.3;
-$my_money = 100;
+$grizai_velai = rand(0, 1);
+$grizai_isgeres = rand(0, 1);
 
-$fuel_total = $distance * $consumption / 100;
-$price_trip = $fuel_total * $price_1;
-if ($price_trip > $my_money) {
-    $iperkama = 'neįperkama';
+if ($grizai_velai == true && !$grizai_isgeres == true) {
+    $pasekmes = 'grįžai vėlai';
+} elseif ($grizai_velai == true && $grizai_isgeres == true) {
+    $pasekmes = 'grįžai vėlai ir išgėręs';
+} elseif (!$grizai_velai == true && $grizai_isgeres == true) {
+    $pasekmes = 'grįžai išgėręs';
 } else {
-    $iperkama = 'įperkama';
-}
+    $pasekmes = 'nieko nepadarei';
+};
 
-$nuvaziuotas_kelias = 'Nuvažiuota distancija: ' . $distance . ' km.';
-$kuro_sanaudos = 'Sunaudota ' . $fuel_total . ' l. kuro.';
-$islaidos = 'Kaina ' . $price_trip . ' pinigų.';
-$ar_galiu_vaziuot = 'Išvada: Kelionė ' . $iperkama;
+$aplinkybes = 'Situacija ' . $pasekmes;
 
 ?>
 <html>
 <head>
-    <meta charet="UTF-8"
+    <meta charet="UTF-8">
 </head>
 <body>
-    <h1>Kelionės skaičiuoklė</h1>
-    <ul>
-        <li><?php print $nuvaziuotas_kelias; ?></li>
-        <li><?php print $kuro_sanaudos; ?></li>
-        <li><?php print $islaidos; ?></li>
-        <li><?php print $my_money; ?></li>
-    </ul>
-    <hr>
-    <p><?php print $ar_galiu_vaziuot; ?></p>
+    <h1>Buitinė skaičiuoklė</h1>
+    <h2><?php print $aplinkybes; ?></h2>
 </body>
 </html>
