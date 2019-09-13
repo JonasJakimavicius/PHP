@@ -1,33 +1,39 @@
 <?php
 
-$grizai_velai = rand(0, 1);
-$grizai_isgeres = rand(0, 1);
+$sunny = rand(0, 1);
 
-if ($grizai_velai && !$grizai_isgeres) {
-    $pasekmes = 'grįžai vėlai';
-    $sofa = 'nemiegosi';
-} elseif ($grizai_velai && !$grizai_isgeres) {
-    $pasekmes = 'grįžai vėlai ir išgėręs';
-    $sofa = 'Miegosi';
-} elseif (!$grizai_velai && $grizai_isgeres) {
-    $pasekmes = 'grįžai išgėręs';
-    $sofa = 'nemiegosi';
+if ($sunny) {
+    $weather = 'sun';
+    $weathertext = 'saulėta';
 } else {
-    $pasekmes = 'nieko nepadarei';
-    $sofa = 'nemiegosi';
+    $weather = 'cloudy';
+    $weathertext = 'debesuota';
 }
-
-$aplinkybes = 'Situacija ' . $pasekmes;
-$miegosi = 'Išvada: ' . $sofa . ' ant sofos'
 
 ?>
 <html>
 <head>
     <meta charet="UTF-8">
+    <style>
+        .sun {
+            background: url("https://solarsystem.nasa.gov/system/basic_html_elements/x11561_Sun.png.pagespeed.ic.0igPUXQBpc.png");
+            display: block;
+            height: 200px;
+            width: 200px;
+            background-size: cover;
+        }
+
+        .cloudy {
+            background: url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+            display: block;
+            height: 200px;
+            width: 200px;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
-    <h1>Buitinė skaičiuoklė</h1>
-    <h2><?php print $aplinkybes; ?></h2>
-    <h3> <?php print $miegosi; ?></h3>
+    <div class="<?php print $weather; ?>"></div>
+    <div><?php print $weathertext; ?></div>
 </body>
 </html>
