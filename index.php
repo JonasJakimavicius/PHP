@@ -3,7 +3,7 @@
 $distance = rand(1, 100);
 $consumption = 7.5;
 $price_1 = 1.3;
-$fuel_total = $distance * $consumption;
+$fuel_total = $distance * $consumption/100;
 $price_trip = $fuel_total * $price_1;
 $nuvaziuotas_kelias = 'Nuvažiuota distancija: ' . $distance . ' km.';
 $kuro_sanaudos = 'Sunaudota ' . $fuel_total . ' l. kuro.';
