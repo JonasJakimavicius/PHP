@@ -13,7 +13,6 @@ for ($i = 1; $i <= $kates; $i++) {
             }
         }
     }
-}
 
 $dalyviai = "Dalyvavo $kates katės ir $sunys šunys.";
 $katasuniu_iseiga = "Katašunių išeiga: $katasuniai.";
