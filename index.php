@@ -2,7 +2,6 @@
 
 $kates = rand(1, 3);
 $sunys = rand(1, 3);
-
 $katasuniai = 0;
 
 for ($i = 1; $i <= $kates; $i++) {
