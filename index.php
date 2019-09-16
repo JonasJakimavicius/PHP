@@ -9,7 +9,7 @@ for ($i = 0; $i < 12; $i++) {
     $wallet += $month_income - $month_expenses;
 }
 
-$h2_text = "Po $months m., prognuozuojamas likutis: $wallet."
+$h2_text = "Po $months m., prognuozuojamas likutis: $wallet.";
 
 ?>
 <html>
