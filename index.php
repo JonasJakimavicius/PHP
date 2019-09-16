@@ -7,6 +7,7 @@ $katasuniai = 0;
 
 for ($i = 1; $i <= $kates; $i++) {
     for ($x = 1; $x <= $sunys; $x++) {
+
         if ($pavyko) {
             $katasuniai++;
             break;
