@@ -4,24 +4,21 @@ $days = 365;
 $pack_price = 3.5;
 $count_ttl = 0;
 
-for ($i = 1; $i < $days; $i++) {
-    $current_day = date('l');
+for ($i = 0; $i < $days; $i++) {
+    $current_day = date('N', strtotime("+ $i days"));
 
-    if ($current_day == 'Monday' || $current_day == 'Tuesday' || $current_day == 'Wednesday' || $current_day == 'Thursday' || $current_day == 'Friday') {
+    if ($current_day <= 5) {
         $cigs_mon_fri = rand(3, 4);
         $count_ttl += $cigs_mon_fri;
-        $current_day = date('l', strtotime("+ $i days"));
 
-    } elseif ($current_day == 'Saturday') {
+    } elseif ($current_day == 6) {
         $cigs_sat = rand(10, 20);
         $count_ttl += $cigs_sat;
-        $current_day = date('l', strtotime("+ $i days"));
     }
-
     $cigs_sun = rand(1, 5);
     $count_ttl += $cigs_sun;
-    $current_day = date('l', strtotime("+ $i days"));
 }
+
 
 $price_ttl = $count_ttl / 20 * $pack_price;
 
