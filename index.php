@@ -1,17 +1,18 @@
 <?php
 
-$grikiai = 5000;
-$grikiu_likutis = $grikiai;
-$days = 0;
+$months = 24;
+$car_price_new = 3000;
+$depreciation = 2;
+$car_price_used = $car_price_new;
 
-for ($per_day = rand(200, 500); $grikiu_likutis > $per_day; $per_day = rand(200, 500)) {
-    $grikiu_likutis -= $per_day;
-    $days++;
+for ($i = 0; $i < $months; $i++) {
+    $car_price_used -= ($car_price_new / 100 * $depreciation);
 }
 
-$data = date('Y-m-d', strtotime("+ $days days"));
-$h2_text = "Rasta grikių: $grikiai g.";
-$h3_text = "Išgyvensiu dar $days dienas, iki $data."
+$depr_perc = $car_price_used / $car_price_new * 100;
+$h2_text = "Naujos mašinos kaina: $$car_price_new";
+$h3_text = "Po $months mėn., mašinos vertė bus: $car_price_used eur";
+$h4_text = "Mašina nuvertės $depr_perc proc";
 
 ?>
 <html>
@@ -19,8 +20,9 @@ $h3_text = "Išgyvensiu dar $days dienas, iki $data."
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Kiek dienų galėsi valgyti grikius?</h1>
+    <h1>Kiek nuvertės mašina?</h1>
     <h2><?php print $h2_text; ?></h2>
     <h3><?php print $h3_text; ?></h3>
+    <h4><?php print $h4_text; ?></h4>
 </body>
 </html>
