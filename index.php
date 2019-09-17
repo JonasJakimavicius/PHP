@@ -3,20 +3,13 @@
 $grikiai = 5000;
 $grikiu_likutis = $grikiai;
 $days = 0;
-$data = date('Y-m-d', strtotime("+ $days days"));
 
-for ($i = 0; $grikiu_likutis > 0; $i + $per_day) {
-    $per_day = rand(200, 500);
-
-    if ($per_day < $grikiu_likutis) {
-        $grikiu_likutis -= $per_day;
-        $days++;
-
-    } else {
-        break;
-    }
+for ($per_day = rand(200, 500); $grikiu_likutis > $per_day; $per_day = rand(200, 500)) {
+    $grikiu_likutis -= $per_day;
+    $days++;
 }
 
+$data = date('Y-m-d', strtotime("+ $days days"));
 $h2_text = "Rasta grikių: $grikiai g.";
 $h3_text = "Išgyvensiu dar $days dienas, iki $data."
 
