@@ -45,6 +45,7 @@ $h3_text = "Viso traukdamas prastovėsiu $time_ttl valandų";
 
         .package {
             width: 100px;
+            height: 20px;
             display: inline-block;
             border: solid 1px;
             margin: 2px 3px;
