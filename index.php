@@ -1,43 +1,44 @@
 <?php
 
-$npc = [
-    'petras_pizdzius' =>
+$lentynos = [
+    'pirma_lentyna' =>
         [
-            'name' => 'Petras Pizdžius',
-            'items' =>
-                [
-                    'telefonas',
-                ],
-            'state' =>
-                [
-                    'pamestas',
-                ],
+            [
+                'name' => 'Kiaušiniai',
+                'img' => 'url',
+            ],
+            [
+                'name' => 'Grietinė',
+                'img' => 'url',
+            ],
+            [
+                'name' => 'Jogurtas',
+                'img' => 'url',
+            ],
+            [
+                'name' => 'Žuvis',
+                'img' => '',
+            ],
         ],
-    'tomas_ablomas' =>
+    'antra_lentyna' =>
         [
-            'name' => 'Tomas Ablomas',
-            'items' =>
-                [
-                    'buljonas',
-                ],
-            'state' =>
-                [
-                    'naudojamas',
-                ],
-        ],
-    'ana_shitkova' =>
-        [
-            'name' => 'Ana Shitkova',
-            'items' =>
-                [
-                    'rulonas',
-                ],
-            'state' =>
-                [
-                    'pasibaigęs',
-                ],
+            [
+                'name' => 'Pienas',
+                'img' => 'url',
+            ],
+            [
+                'name' => 'Kefyras',
+                'img' => '',
+            ],
+            [
+                'name' => 'Degtinė',
+                'img' => 'url',
+            ],
+            [
+                'name' => 'Kečupas',
+                'img' => '',
+            ],
         ],
 ];
 
-
-var_dump($npc);
+var_dump($lentynos);
