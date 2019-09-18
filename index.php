@@ -5,7 +5,6 @@ $mano_atmintis = ['Penktadienis', 'Paskaita', 'Baras', 'Alus', 'Draugai'];
 $count_mano_atmintis = count($mano_atmintis) - 1;
 $rand_flashback = rand(0, $count_mano_atmintis);
 
-
 $flashback_text = "Flashback $rand_flashback : $mano_atmintis[$rand_flashback]";
 
 ?>
