@@ -1,49 +1,26 @@
 <?php
 
-$mano_atmintis = ['Penktadienis', 'Paskaita', 'Baras', 'Alus', 'Draugai'];
-$draugo_atmintis = ['Penktadienis', 'Paskaita', 'Baras', 'Alus', 'Blackout'];
-$bendra_atmintis = [];
+$array = [];
+$work_start = 9;
+$work_end = 17;
 
-$count_mano_atmintis = count($mano_atmintis) - 1;
-$rand_flashback = rand(0, $count_mano_atmintis);
+for ($i = 0; $i < 7; $i++) {
+    $date = date('l', strtotime("+ $i days"));
 
-$flashback_text = "Flashback $rand_flashback : $mano_atmintis[$rand_flashback]";
+    if ($date == 'Saturday') {
+        $array[$date] = 'Sleep day';
+    } elseif ($date == 'Sunday') {
+        $array[$date] = 'Church day';
+    } else {
 
-foreach ($mano_atmintis as $mano_prisiminimas) {
-
-    foreach ($draugo_atmintis as $draugo_prisiminimas) {
-
-        if ($mano_prisiminimas == $draugo_prisiminimas) {
-            $bendra_atmintis[] = $mano_prisiminimas;
+        for ($hour = 0; $hour < 24; $hour++) {
+            if ($hour >= $work_start && $hour < $work_end) {
+                $array[$date][$hour] = 'Work hour';
+            } else {
+                $array[$date][$hour] = 'Free time';
+            }
         }
     }
 }
 
-?>
-<html>
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <h1>Kas buvo penktadienį?</h1>
-    <h2>Jono atmintis</h2>
-    <h3><?php print $flashback_text; ?></h3>
-    <ul>
-        <?php foreach ($mano_atmintis as $prisiminimas): ?>
-            <li><?php print $prisiminimas; ?></li>
-        <?php endforeach; ?>
-    </ul>
-    <h2>Draugo atmintis</h2>
-    <ul>
-        <?php foreach ($draugo_atmintis as $prisiminimas): ?>
-            <li><?php print $prisiminimas; ?></li>
-        <?php endforeach; ?>
-    </ul>
-    <h3>Sutapę prisiminimai:</h3>
-    <ul>
-        <?php foreach ($bendra_atmintis as $prisiminimas): ?>
-            <li><?php print $prisiminimas; ?></li>
-        <?php endforeach; ?>
-    </ul>
-</body>
-</html>
+var_dump($array);
