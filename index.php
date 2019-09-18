@@ -40,4 +40,4 @@ $npc = [
 ];
 
 
-var_dump($quests);
+var_dump($npc);
