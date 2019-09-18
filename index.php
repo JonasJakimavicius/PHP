@@ -21,4 +21,4 @@ $quests = [
         ],
 ];
 
-var_dump($people);
+var_dump($quests);
