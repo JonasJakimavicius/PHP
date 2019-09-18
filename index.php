@@ -7,7 +7,6 @@ $people = [
                 [
                     'name' => 'Petras',
                     'surname' => 'Pizdžius',
-                    'event' => 'pamestas telefonas',
                 ],
             'naudojamas_buljonas' =>
                 [
