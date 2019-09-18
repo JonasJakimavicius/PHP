@@ -1,6 +1,6 @@
 <?php
 
-'npc' = [
+$npc = [
     'petras_pizdzius' =>
         [
             'name' => 'Petras Pizdžius',
