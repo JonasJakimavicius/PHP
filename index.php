@@ -1,24 +1,45 @@
 <?php
 
-$quests = [
-    'artifact' =>
-        [
-            'pamestas_telefonas' =>
+$quests =
+    [
+        'npc' => [
+            'petras_pizdzius' =>
                 [
-                    'name' => 'Petras',
-                    'surname' => 'Pizdžius',
+                    'name' => 'Petras Pizdžius',
+                    'items' =>
+                        [
+                            'telefonas',
+                        ],
+                    'state' =>
+                        [
+                            'pamestas',
+                        ],
                 ],
-            'naudojamas_buljonas' =>
+            'tomas_ablomas' =>
                 [
-                    'name' => 'Tomas',
-                    'surname' => 'Ablomas',
+                    'name' => 'Tomas Ablomas',
+                    'items' =>
+                        [
+                            'buljonas',
+                        ],
+                    'state' =>
+                        [
+                            'naudojamas',
+                        ],
                 ],
-            'pasibaigęs_rulonas' =>
+            'ana_shitkova' =>
                 [
-                    'name' => 'Ana',
-                    'surname' => 'Shitkova',
+                    'name' => 'Ana Shitkova',
+                    'items' =>
+                        [
+                            'rulonas',
+                        ],
+                    'state' =>
+                        [
+                            'pasibaigęs',
+                        ],
                 ],
         ],
-];
+    ];
 
 var_dump($quests);
