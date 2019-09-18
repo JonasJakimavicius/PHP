@@ -1,6 +1,6 @@
 <?php
 
-$people = [
+$quests = [
     'artifact' =>
         [
             'pamestas_telefonas' =>
