@@ -1,45 +1,43 @@
 <?php
 
-$quests =
-    [
-        'npc' => [
-            'petras_pizdzius' =>
+'npc' = [
+    'petras_pizdzius' =>
+        [
+            'name' => 'Petras Pizdžius',
+            'items' =>
                 [
-                    'name' => 'Petras Pizdžius',
-                    'items' =>
-                        [
-                            'telefonas',
-                        ],
-                    'state' =>
-                        [
-                            'pamestas',
-                        ],
+                    'telefonas',
                 ],
-            'tomas_ablomas' =>
+            'state' =>
                 [
-                    'name' => 'Tomas Ablomas',
-                    'items' =>
-                        [
-                            'buljonas',
-                        ],
-                    'state' =>
-                        [
-                            'naudojamas',
-                        ],
-                ],
-            'ana_shitkova' =>
-                [
-                    'name' => 'Ana Shitkova',
-                    'items' =>
-                        [
-                            'rulonas',
-                        ],
-                    'state' =>
-                        [
-                            'pasibaigęs',
-                        ],
+                    'pamestas',
                 ],
         ],
-    ];
+    'tomas_ablomas' =>
+        [
+            'name' => 'Tomas Ablomas',
+            'items' =>
+                [
+                    'buljonas',
+                ],
+            'state' =>
+                [
+                    'naudojamas',
+                ],
+        ],
+    'ana_shitkova' =>
+        [
+            'name' => 'Ana Shitkova',
+            'items' =>
+                [
+                    'rulonas',
+                ],
+            'state' =>
+                [
+                    'pasibaigęs',
+                ],
+        ],
+];
+
 
 var_dump($quests);
