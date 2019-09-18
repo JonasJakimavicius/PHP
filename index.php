@@ -1,22 +1,25 @@
 <?php
 
-$produktai = [
-    [
-        'name' => 'kiaušiniai',
-        'amount' => 2,
-        'size' => 'dideli',
-    ],
-    [
-        'name' => 'baklažanas',
-        'amount' => 1,
-        'size' => 'mažas',
-    ],
-    [
-        'name' => 'Grietinės indėlis',
-        'amount' => 1,
-        'size' => 'didelis',
-    ],
-
+$people = [
+    'artifact' =>
+        [
+            'pamestas_telefonas' =>
+                [
+                    'name' => 'Petras',
+                    'surname' => 'Pizdžius',
+                    'event' => 'pamestas telefonas',
+                ],
+            'naudojamas_buljonas' =>
+                [
+                    'name' => 'Tomas',
+                    'surname' => 'Ablomas',
+                ],
+            'pasibaigęs_rulonas' =>
+                [
+                    'name' => 'Ana',
+                    'surname' => 'Shitkova',
+                ],
+        ],
 ];
 
-var_dump($produktai);
+var_dump($people);
