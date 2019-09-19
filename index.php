@@ -48,7 +48,7 @@ foreach ($bank_report as $money_transfer_id => $money_transfer) {
     <ul>
         <?php foreach ($bank_report as $money_transfer): ?>
             <li class="<?php print $money_transfer['css_class']; ?>">
-                <?php print "{$money_transfer['name']}  : {$money_transfer['amount']} eur"; ?>
+                <?php print "{$money_transfer['name']} : {$money_transfer['amount']} eur"; ?>
             </li>
         <?php endforeach; ?>
     </ul>
