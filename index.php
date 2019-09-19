@@ -23,9 +23,9 @@ $bank_report =
 
 foreach ($bank_report as $money_transfer_id => $money_transfer) {
     if ($bank_report[$money_transfer_id]['amount'] > 0) {
-        $bank_report[$money_transfer_id]['css_class'] = ['income'];
+        $bank_report[$money_transfer_id]['css_class'] = 'income';
     } else {
-        $bank_report[$money_transfer_id]['css_class'] = ['expense'];
+        $bank_report[$money_transfer_id]['css_class'] = 'expense';
     }
 }
 
