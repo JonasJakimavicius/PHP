@@ -11,6 +11,11 @@ for ($i = 0; $i < 7; $i++) {
         $array[$date] = 'Sleep day';
     } elseif ($date == 'Sunday') {
         $array[$date] = 'Church day';
+
+    } elseif ($date == 'Friday') {
+        $array[$date] = 'Blackout';
+
+
     } else {
 
         for ($hour = 0; $hour < 24; $hour++) {
@@ -23,4 +28,5 @@ for ($i = 0; $i < 7; $i++) {
     }
 }
 
+unset($array['Friday']);
 var_dump($array);
