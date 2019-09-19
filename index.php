@@ -1,32 +1,32 @@
 <?php
 
-$array = [];
-$work_start = 9;
-$work_end = 17;
+$bank_report =
+    [
+        [
+            'name' => 'Iki darbo uzmokescio',
+            'amount' => 600,
+        ],
+        [
+            'name' => 'Kalvariju nacnykas',
+            'amount' => -15,
+        ],
+        [
+            'name' => 'Meat lovers',
+            'amount' => -20,
+        ],
+        [
+            'name' => 'Gringo',
+            'amount' => -40,
 
-for ($i = 0; $i < 7; $i++) {
-    $date = date('l', strtotime("+ $i days"));
+        ],
+    ];
 
-    if ($date == 'Saturday') {
-        $array[$date] = 'Sleep day';
-    } elseif ($date == 'Sunday') {
-        $array[$date] = 'Church day';
-
-    } elseif ($date == 'Friday') {
-        $array[$date] = 'Blackout';
-
-
+foreach ($bank_report as $money_transfer_id => $money_transfer) {
+    if ($bank_report[$money_transfer_id]['amount'] > 0) {
+        $bank_report[$money_transfer_id]['css_class'] = ['income'];
     } else {
-
-        for ($hour = 0; $hour < 24; $hour++) {
-            if ($hour >= $work_start && $hour < $work_end) {
-                $array[$date][$hour] = 'Work hour';
-            } else {
-                $array[$date][$hour] = 'Free time';
-            }
-        }
+        $bank_report[$money_transfer_id]['css_class'] = ['expense'];
     }
 }
 
-unset($array['Friday']);
-var_dump($array);
+var_dump($bank_report);
