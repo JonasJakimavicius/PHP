@@ -29,4 +29,28 @@ foreach ($bank_report as $money_transfer_id => $money_transfer) {
     }
 }
 
-var_dump($bank_report);
+?>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .income {
+            color: green;
+        }
+
+        .expense {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Banko ataskaita</h1>
+    <ul>
+        <?php foreach ($bank_report as $money_transfer_id => $money_transfer): ?>
+            <li class="<?php print $bank_report[$money_transfer_id]['css_class']; ?>">
+                <?php print $bank_report[$money_transfer_id]['amount']; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</body>
+</html>
