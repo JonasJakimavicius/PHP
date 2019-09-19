@@ -46,9 +46,9 @@ foreach ($bank_report as $money_transfer_id => $money_transfer) {
 <body>
     <h1>Banko ataskaita</h1>
     <ul>
-        <?php foreach ($bank_report as $money_transfer_id => $money_transfer): ?>
-            <li class="<?php print $bank_report[$money_transfer_id]['css_class']; ?>">
-                <?php print $bank_report[$money_transfer_id]['amount']; ?>
+        <?php foreach ($bank_report as $money_transfer): ?>
+            <li class="<?php print $money_transfer['css_class']; ?>">
+                <?php print $money_transfer['amount']; ?>
             </li>
         <?php endforeach; ?>
     </ul>
