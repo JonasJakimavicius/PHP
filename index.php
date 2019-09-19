@@ -5,9 +5,7 @@ $rasinys = [];
 
 $zodziai_count = (count($zodziai) - 1);
 
-for ($i = 0;
-     $i < rand(0, 50);
-     $i++) {
+for ($i = 0; $i < rand(0, 50); $i++) {
     $rasinys[] = $zodziai[rand(0, $zodziai_count)];
 }
 
