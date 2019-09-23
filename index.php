@@ -7,18 +7,18 @@ $moods =
                 'bg-class' => 'bg-color-0',
                 'color-class' => 'color-0',
                 'emotion' => 'Bl',
+
+            ],
+            [
+
                 'text' => 'Neparūkiau',
             ],
             [
-                'bg-class' => 'bg-color-0',
-                'color-class' => 'color-0',
-                'emotion' => 'Bl',
+
                 'text' => 'Neišgėriau kavos',
             ],
             [
-                'bg-class' => 'bg-color-0',
-                'color-class' => 'color-0',
-                'emotion' => 'Bl',
+
                 'text' => 'Pramiegojau',
             ],
         ],
@@ -27,18 +27,17 @@ $moods =
                 'bg-class' => 'bg-color-1',
                 'color-class' => 'color-1',
                 'emotion' => 'Px',
+            ],
+
+            [
+
                 'text' => 'Apsipyliau kava',
             ],
             [
-                'bg-class' => 'bg-color-1',
-                'color-class' => 'color-1',
-                'emotion' => 'Px',
+
                 'text' => 'Baigėsi kava',
             ],
             [
-                'bg-class' => 'bg-color-1',
-                'color-class' => 'color-1',
-                'emotion' => 'Px',
                 'text' => 'Baigėsi pienas',
             ],
 
@@ -49,18 +48,14 @@ $moods =
                 'bg-class' => 'bg-color-2',
                 'color-class' => 'color-2',
                 'emotion' => 'Nx',
+            ],
+            [
                 'text' => 'Pamiršau piniginę',
             ],
             [
-                'bg-class' => 'bg-color-2',
-                'color-class' => 'color-2',
-                'emotion' => 'Nx',
                 'text' => 'Katinas primyžo į batus',
             ],
             [
-                'bg-class' => 'bg-color-2',
-                'color-class' => 'color-2',
-                'emotion' => 'Nx',
                 'text' => 'Neužsivedė mašina',
             ],
 
@@ -70,18 +65,16 @@ $moods =
                 'bg-class' => 'bg-color-3',
                 'color-class' => 'color-3',
                 'emotion' => 'Pzda',
+            ],
+            [
+
                 'text' => 'Pavogė mašiną',
             ],
             [
-                'bg-class' => 'bg-color-3',
-                'color-class' => 'color-3',
-                'emotion' => 'Pzda',
                 'text' => 'Pavogė piniginę',
             ],
             [
-                'bg-class' => 'bg-color-3',
-                'color-class' => 'color-3',
-                'emotion' => 'Pzda',
+
                 'text' => 'Neturiu rūkyt',
             ],
 
@@ -91,6 +84,16 @@ $moods =
 
 $random_number = rand(0, 3);
 
+foreach ($moods as $mood_id => $mood) {
+
+    if ($mood_id > $random_number) {
+        $moods[$mood_id][0]['bg-class'] = 'bg-color-grey';
+    }
+
+    if ($mood_id != $random_number) {
+        $moods[$mood_id][0]['emotion'] = '';
+    }
+}
 
 ?>
 <html>
@@ -165,21 +168,16 @@ $random_number = rand(0, 3);
 </head>
 <body>
     <div class="thermometer-round"></div>
-    <?php for ($i = 0; $i <= $random_number; $i++): ?>
-        <div class="thermometer-square <?php print $moods[$i][rand(0, 2)]['bg-class']; ?>">
-            <?php if ($i == $random_number): ?>
-                <?php print $moods[$i][0]['emotion']; ?>
-            <?php endif; ?>
+    <?php foreach ($moods as $mood_id => $mood): ?>
+        <div class="thermometer-square <?php print $moods[$mood_id][0]['bg-class']; ?>">
+            <?php print $moods[$mood_id][0]['emotion']; ?>
         </div>
-    <?php endfor; ?>
-    <?php for ($i = 0;
-               $i < 3 - $random_number;
-               $i++): ?>
-        <div class="thermometer-square bg-color-grey"></div>
-    <?php endfor; ?>
+    <?php endforeach; ?>
     <ul>
         <?php for ($i = 0; $i <= $random_number; $i++): ?>
-            <li class="<?php print $moods[$i][rand(0, 2)]['color-class'] ?>">  <?php print $moods[$i][rand(0, 2)]['text'] ?></li>
+            <li class=" <?php print $moods[$i][0]['color-class'] ?>">
+                <?php print $moods[$i][rand(1, 3)]['text'] ?>
+            </li>
         <?php endfor; ?>
     </ul>
 </body>
