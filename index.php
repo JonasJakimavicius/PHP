@@ -73,8 +73,8 @@ $moods =
                 'text' => 'Pavogė mašiną',
             ],
             [
-                'bg-class' => 'bg-color-2',
-                'color-class' => 'color-2',
+                'bg-class' => 'bg-color-3',
+                'color-class' => 'color-3',
                 'emotion' => 'Pzda',
                 'text' => 'Pavogė piniginę',
             ],
