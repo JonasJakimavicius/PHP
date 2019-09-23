@@ -1,184 +1,156 @@
 <?php
 
-$moods =
+$thermometer = [
+    ['class' => 'bg-green', 'text' => 'PX'],
+    ['class' => 'bg-yellow', 'text' => 'BL'],
+    ['class' => 'bg-orange', 'text' => 'NX'],
+    ['class' => 'bg-red', 'text' => 'PZ2A'],
+];
+
+$stories = [
     [
-        [
-            [
-                'bg-class' => 'bg-color-0',
-                'color-class' => 'color-0',
-                'emotion' => 'Bl',
-
-            ],
-            [
-
-                'text' => 'Neparūkiau',
-            ],
-            [
-
-                'text' => 'Neišgėriau kavos',
-            ],
-            [
-
-                'text' => 'Pramiegojau',
-            ],
+        'class' => 'text-green',
+        'stories' => [
+            'Atsikėliau',
+            'Prabudau',
+            'Išlipau iš lovos'
         ],
-        [
-            [
-                'bg-class' => 'bg-color-1',
-                'color-class' => 'color-1',
-                'emotion' => 'Px',
-            ],
-
-            [
-
-                'text' => 'Apsipyliau kava',
-            ],
-            [
-
-                'text' => 'Baigėsi kava',
-            ],
-            [
-                'text' => 'Baigėsi pienas',
-            ],
-
+    ],
+    [
+        'class' => 'text-yellow',
+        'stories' => [
+            'Vėl pirmadienis',
+            'Apšalę mašinos langai',
+            'Nėra ką valgyt pusryčiams'
         ],
-
-        [
-            [
-                'bg-class' => 'bg-color-2',
-                'color-class' => 'color-2',
-                'emotion' => 'Nx',
-            ],
-            [
-                'text' => 'Pamiršau piniginę',
-            ],
-            [
-                'text' => 'Katinas primyžo į batus',
-            ],
-            [
-                'text' => 'Neužsivedė mašina',
-            ],
-
+    ],
+    [
+        'class' => 'text-orange',
+        'stories' => [
+            'Pavėlavau į darbo meetą',
+            'Pamiršau cigaretes',
+            'Balandis apšiko švarką'
         ],
-        [
-            [
-                'bg-class' => 'bg-color-3',
-                'color-class' => 'color-3',
-                'emotion' => 'Pzda',
-            ],
-            [
-
-                'text' => 'Pavogė mašiną',
-            ],
-            [
-                'text' => 'Pavogė piniginę',
-            ],
-            [
-
-                'text' => 'Neturiu rūkyt',
-            ],
-
+    ],
+    [
+        'class' => 'text-red',
+        'stories' => [
+            'Užtvindžiau kaimynus',
+            'Mane užtvindė kaimynai',
+            'Sumaišiau panaudotą katės kraiką su šokoladu'
         ],
+    ],
+];
 
-    ];
+$target_state = rand(1, 4);
 
-$random_number = rand(0, 3);
-
-foreach ($moods as $mood_id => $mood) {
-
-    if ($mood_id > $random_number) {
-        $moods[$mood_id][0]['bg-class'] = 'bg-color-grey';
+foreach ($thermometer as $state_idx => $state) {
+    if ($state_idx < $target_state) {
+        // Set Story
+        $story_idx = array_rand($stories[$state_idx]['stories']);
+        $stories[$state_idx]['chosen_story'] = $stories[$state_idx]['stories'][$story_idx];
+    } else {
+        $thermometer[$state_idx]['class'] = 'white';
+        unset($stories[$state_idx]);
     }
 
-    if ($mood_id != $random_number) {
-        $moods[$mood_id][0]['emotion'] = '';
+    if ($state_idx !== $target_state) {
+        $thermometer[$state_idx]['name'] = '';
     }
 }
 
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Thermometer</title>
     <style>
-        ul {
-            padding-top: 100px;
+        body {
+            background: black;
         }
 
-        .thermometer-round {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            background: red;
-            display: inline-block;
-            float: left;
+        .container {
+            display: flex;
+            align-items: center;
         }
 
-        .thermometer-square {
-            height: 50px;
+        .thermo-circle, .thermo-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .thermo-circle {
             width: 100px;
-            border: 1px solid black;
-            display: inline-block;
-            float: left;
-        }
-
-        .color-0 {
-            color: green;
-
-        }
-
-        .color-1 {
-            color: yellow;
-
-        }
-
-        .color-2 {
-            color: orange;
-
-        }
-
-        .color-3 {
-            color: red;
-
-        }
-
-        .bg-color-0 {
+            height: 100px;
             background-color: green;
-
+            border-radius: 100%;
         }
 
-        .bg-color-1 {
-            background-color: yellow;
-
+        .thermo-box {
+            width: 100px;
+            height: 50px;
+            border: 2px solid grey;
         }
 
-        .bg-color-2 {
-            background-color: orange;
 
+        .bg-green {
+            background-color: green;
         }
 
-        .bg-color-3 {
+        .bg-yellow {
+            background-color: #f3f309;
+        }
+
+        .bg-red {
             background-color: red;
-
         }
 
-        .bg-color-grey {
-            background-color: grey;
+        .bg-orange {
+            background-color: orange;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        .text-green {
+            color: green;
+        }
+
+        .text-yellow {
+            color: yellow;
+        }
+
+        .text-orange {
+            color:  orange;
+        }
+
+        .text-red {
+            color: red;
         }
     </style>
 </head>
 <body>
-    <div class="thermometer-round"></div>
-    <?php foreach ($moods as $mood_id => $mood): ?>
-        <div class="thermometer-square <?php print $moods[$mood_id][0]['bg-class']; ?>">
-            <?php print $moods[$mood_id][0]['emotion']; ?>
-        </div>
-    <?php endforeach; ?>
+    <div class="container">
+        <div class="thermo-circle">0</div>
+
+        <?php foreach ($thermometer as $state_idx => $state) : ?>
+            <div class="thermo-box <?php print $state['class']; ?>">
+                <?php print $state['text']; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
     <ul>
-        <?php for ($i = 0; $i <= $random_number; $i++): ?>
-            <li class=" <?php print $moods[$i][0]['color-class'] ?>">
-                <?php print $moods[$i][rand(1, 3)]['text'] ?>
+        <?php foreach ($stories as $story): ?>
+            <li class="<?php print $story['class']; ?>">
+                <?php print $story['chosen_story']; ?>
             </li>
-        <?php endfor; ?>
+        <?php endforeach; ?>
     </ul>
 </body>
 </html>
