@@ -95,8 +95,6 @@ if ($random_number == 0) {
 </head>
 <body>
     <div class="round"></div>
-
-
     <?php foreach ($moods as $mood_id => $mood): ?>
         <?php if ($random_number >= $number): ?>
             <div class="square bg-color-<?php print $mood_id; ?>">
@@ -121,6 +119,5 @@ if ($random_number == 0) {
             <?php endif; ?>
         <?php endforeach; ?>
     </ul>
-
 </body>
 </html>
