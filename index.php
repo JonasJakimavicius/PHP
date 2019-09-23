@@ -2,25 +2,95 @@
 
 $moods =
     [
-        ['Neparūkiau', 'Neišgėriau kavos', 'Pramiegojau',],
-        ['Apsipyliau kava', 'Baigėsi kava', 'Baigėsi pienas',],
-        ['Pamiršau piniginę', 'Katinas primyžo į batus', 'Neužsivedė mašina',],
-        ['Pavogė mašiną', 'Pavogė piniginę', 'Neturiu rūkyt'],
+        [
+            [
+                'bg-class' => 'bg-color-0',
+                'color-class' => 'color-0',
+                'emotion' => 'Bl',
+                'text' => 'Neparūkiau',
+            ],
+            [
+                'bg-class' => 'bg-color-0',
+                'color-class' => 'color-0',
+                'emotion' => 'Bl',
+                'text' => 'Neišgėriau kavos',
+            ],
+            [
+                'bg-class' => 'bg-color-0',
+                'color-class' => 'color-0',
+                'emotion' => 'Bl',
+                'text' => 'Pramiegojau',
+            ],
+        ],
+        [
+            [
+                'bg-class' => 'bg-color-1',
+                'color-class' => 'color-1',
+                'emotion' => 'Px',
+                'text' => 'Apsipyliau kava',
+            ],
+            [
+                'bg-class' => 'bg-color-1',
+                'color-class' => 'color-1',
+                'emotion' => 'Px',
+                'text' => 'Baigėsi kava',
+            ],
+            [
+                'bg-class' => 'bg-color-1',
+                'color-class' => 'color-1',
+                'emotion' => 'Px',
+                'text' => 'Baigėsi pienas',
+            ],
+
+        ],
+
+        [
+            [
+                'bg-class' => 'bg-color-2',
+                'color-class' => 'color-2',
+                'emotion' => 'Nx',
+                'text' => 'Pamiršau piniginę',
+            ],
+            [
+                'bg-class' => 'bg-color-2',
+                'color-class' => 'color-2',
+                'emotion' => 'Nx',
+                'text' => 'Katinas primyžo į batus',
+            ],
+            [
+                'bg-class' => 'bg-color-2',
+                'color-class' => 'color-2',
+                'emotion' => 'Nx',
+                'text' => 'Neužsivedė mašina',
+            ],
+
+        ],
+        [
+            [
+                'bg-class' => 'bg-color-3',
+                'color-class' => 'color-3',
+                'emotion' => 'Pzda',
+                'text' => 'Pavogė mašiną',
+            ],
+            [
+                'bg-class' => 'bg-color-2',
+                'color-class' => 'color-2',
+                'emotion' => 'Pzda',
+                'text' => 'Pavogė piniginę',
+            ],
+            [
+                'bg-class' => 'bg-color-3',
+                'color-class' => 'color-3',
+                'emotion' => 'Pzda',
+                'text' => 'Neturiu rūkyt',
+            ],
+
+        ],
+
     ];
 
 $random_number = rand(0, 3);
-$number = 0;
-$number2 = 0;
 
-if ($random_number == 0) {
-    $text = 'Bl';
-} elseif ($random_number == 1) {
-    $text = 'Px';
-} elseif ($random_number == 2) {
-    $text = 'Nx';
-} else {
-    $text = 'PZDA';
-}
 
 ?>
 <html>
@@ -31,7 +101,7 @@ if ($random_number == 0) {
             padding-top: 100px;
         }
 
-        .round {
+        .thermometer-round {
             height: 50px;
             width: 50px;
             border-radius: 50%;
@@ -40,7 +110,7 @@ if ($random_number == 0) {
             float: left;
         }
 
-        .square {
+        .thermometer-square {
             height: 50px;
             width: 100px;
             border: 1px solid black;
@@ -94,27 +164,22 @@ if ($random_number == 0) {
     </style>
 </head>
 <body>
-    <div class="round"></div>
-    <?php foreach ($moods as $mood_id => $mood): ?>
-        <?php if ($random_number >= $number): ?>
-            <div class="square bg-color-<?php print $mood_id; ?>">
-                <?php if ($mood_id == $random_number): ?>
-                    <?php print $text; ?>
-                <?php endif; ?>
-            </div>
-            <?php $number++; ?>
-        <?php else: ?>
-            <?php for ($i = 0; $i < 3 - $random_number;
-                       $i++): ?>
-                <div class="square bg-color-grey"></div>
-            <?php endfor; ?>
-            <?php break; ?>
-        <?php endif; ?>
-    <?php endforeach; ?>
+    <div class="thermometer-round"></div>
+    <?php for ($i = 0; $i <= $random_number; $i++): ?>
+        <div class="thermometer-square <?php print $moods[$i][rand(0, 2)]['bg-class']; ?>">
+            <?php if ($i == $random_number): ?>
+                <?php print $moods[$i][0]['emotion']; ?>
+            <?php endif; ?>
+        </div>
+    <?php endfor; ?>
+    <?php for ($i = 0;
+               $i < 3 - $random_number;
+               $i++): ?>
+        <div class="thermometer-square bg-color-grey"></div>
+    <?php endfor; ?>
     <ul>
         <?php for ($i = 0; $i <= $random_number; $i++): ?>
-            <li class="color-<?php print $i; ?>">
-                <?php print $moods[$i][rand(0, 2)]; ?></li>
+            <li class="<?php print $moods[$i][rand(0, 2)]['color-class'] ?>">  <?php print $moods[$i][rand(0, 2)]['text'] ?></li>
         <?php endfor; ?>
     </ul>
 </body>
