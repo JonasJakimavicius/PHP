@@ -112,12 +112,10 @@ if ($random_number == 0) {
         <?php endif; ?>
     <?php endforeach; ?>
     <ul>
-        <?php foreach ($moods as $mood_id => $mood): ?>
-            <?php if ($random_number >= $number2): ?>
-                <li class="color-<?php print $mood_id; ?>">
-                    <?php print $moods[$mood_id][rand(0, 2)]; ?></li>
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <?php for ($i = 0; $i <= $random_number; $i++): ?>
+            <li class="color-<?php print $i; ?>">
+                <?php print $moods[$i][rand(0, 2)]; ?></li>
+        <?php endfor; ?>
     </ul>
 </body>
 </html>
