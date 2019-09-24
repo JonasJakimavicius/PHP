@@ -1,64 +1,34 @@
 <?php
 
-$strings = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+$drinks =
+    [
+        [
+            'name' => 'Vilkmergės alus',
+            'price_stock' => 3.6,
+            'discount' => 0,
+            'img' => 'url("https://www.barbora.lt/api/Images/GetInventoryImage?id=0878876b-a242-4332-a48d-1f49d1359734")',
+        ],
+        [
+            'name' => 'Stumbro degtinėla',
+            'price_stock' => 11.79,
+            'discount' => 5,
+            'img' => 'url("https://static.pricer.lt/dynamic/foreign.png?image=https%3A%2F%2Fwww.iki.lt%2Fassets%2FUploads%2FAlco%2F57983.JPG")',
+        ],
+        [
+            'name' => 'Švyturio alus',
+            'price_stock' => 2.6,
+            'discount' => 3,
+            'img' => 'url("https://www.barbora.lt/api/Images/GetInventoryImage?id=f9c116ed-25ce-4e20-be8b-62727efa4862")',
+        ],
+        [
+            'name' => 'Dainavos trauktinė',
+            'price_stock' => 10.6,
+            'discount' => 0,
+            'img' => 'url("http://intermarket.lt/image/cache/catalog/Alkoholiniai%20g%C4%97rimai,%20cigaret%C4%97s/Stiprieji%20g%C4%97rimai/_DSC1801%20as%20Smart%20Object-1%20copy-1000x1000.png")',
+        ],
 
-$count_strings_array = count($strings) - 1;
-$random_string = $strings[rand(0, $count_strings_array)];
-//$root = array_rand($strings);
+    ];
 
-$song = [];
-
-
-for ($a = 0; $a < 3; $a++) {
-    $root = array_rand($strings);
-
-    for ($i = 1; $i < 4; $i++) {
-        $every_th_numb = 2;
-        $accord[] = $strings[$root];
-        $root = $root + $every_th_numb;
-
-        if ($root > $count_strings_array) {
-            $root = $root - $count_strings_array - 1;
-        }
-    }
-    $song[$a] = $accord;
-    $accord = [];
+foreach ($drinks as $drink_id => $drink) {
+    $drinks[$drink_id]['price_retail'] = $drink['price_stock'] - ($drink['price_stock'] / 100 * $drink['discount']);
 }
-
-var_dump($song);
-
-?>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <style>
-        div {
-            width: 20px;
-            height: 100px;
-            border: solid 1px black;
-            display: inline-block;
-        }
-
-        .black {
-            background-color: lightgrey;
-        }
-    </style>
-</head>
-<body>
-
-    <?php foreach ($song as $lyrics_id => $lyrics): ?>
-        <?php foreach ($strings as $note_id => $note): ?>
-            <?php foreach ($lyrics as $letter_id => $letter): ?>
-                <?php if ($letter == $note): ?>
-                    <div class="key  <?php print'black'; ?> ">
-                <?php endif; ?>
-            <?php endforeach; ?>
-            <?php print $note; ?>
-            </div>
-
-        <?php endforeach; ?>
-        <br>
-    <?php endforeach; ?>
-
-</body>
-</html>
