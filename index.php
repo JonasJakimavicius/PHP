@@ -32,3 +32,5 @@ $drinks =
 foreach ($drinks as $drink_id => $drink) {
     $drinks[$drink_id]['price_retail'] = $drink['price_stock'] - ($drink['price_stock'] / 100 * $drink['discount']);
 }
+
+var_dump($drinks);
