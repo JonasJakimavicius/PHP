@@ -29,7 +29,15 @@ $drinks =
     ];
 
 foreach ($drinks as $drink_id => $drink) {
-    $drinks[$drink_id]['price_retail'] = $drink['price_stock'] - ($drink['price_stock'] / 100 * $drink['discount']);
+    $drinks[$drink_id]['price_retail'] = round($drink['price_stock'] - ($drink['price_stock'] / 100 * $drink['discount']), 2);
+
+    if ($drinks[$drink_id]['price_retail'] < $drink['price_stock']) {
+        $drinks[$drink_id]['price_class'] = 'price_bigger';
+        $drinks[$drink_id]['discount_price_class'] = 'price_without_discount';
+    } else {
+        $drinks[$drink_id]['price_class'] = 'price';
+        $drinks[$drink_id]['discount_price_class'] = 'price_regular';
+    }
 }
 
 ?>
@@ -60,7 +68,17 @@ foreach ($drinks as $drink_id => $drink) {
             background-color: deeppink;
             color: white;
             position: relative;
-            bottom: 200px;
+            bottom: 220px;
+            left: 70px;
+        }
+
+        .price_bigger {
+            height: 30px;
+            width: 50px;
+            background-color: red;
+            color: white;
+            position: relative;
+            bottom: 220px;
             left: 70px;
         }
 
@@ -69,6 +87,20 @@ foreach ($drinks as $drink_id => $drink) {
             width: 80px;
             margin: auto;
         }
+
+        .price_without_discount {
+            height: 20px;
+            width: 50px;
+            background-color: grey;
+            color: white;
+            position: relative;
+            bottom: 250px;
+
+        }
+
+        .price_regular {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -76,8 +108,9 @@ foreach ($drinks as $drink_id => $drink) {
     <?php foreach ($drinks as $drink): ?>
         <div class='container'>
             <img src=<?php print $drink['img']; ?>>
-            <div class="price"><?php print '€' . round($drink['price_retail'], 2); ?></div>
             <div class="title"><?php print $drink['name']; ?> </div>
+            <div class="<?php print $drink['price_class']; ?>"><?php print '€' . $drink['price_retail']; ?></div>
+            <div class="<?php print $drink['discount_price_class']; ?> "><?php print'€' . $drink['price_stock']; ?> </div>
         </div>
     <?php endforeach; ?>
 </body>
