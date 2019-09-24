@@ -30,6 +30,8 @@ $drinks =
 
 foreach ($drinks as $drink_id => $drink) {
     $drinks[$drink_id]['price_retail'] = round($drink['price_stock'] - ($drink['price_stock'] / 100 * $drink['discount']), 2);
+    $drinks[$drink_id]['price_retail_text']= '€' . $drinks[$drink_id]['price_retail'] ;
+    $drinks[$drink_id]['price_stock_text']='€' .  $drinks[$drink_id]['price_stock'];
 
     if ($drinks[$drink_id]['price_retail'] < $drink['price_stock']) {
         $drinks[$drink_id]['price_class'] = 'price_bigger';
@@ -109,8 +111,8 @@ foreach ($drinks as $drink_id => $drink) {
         <div class='container'>
             <img src=<?php print $drink['img']; ?>>
             <div class="title"><?php print $drink['name']; ?> </div>
-            <div class="<?php print $drink['price_class']; ?>"><?php print '€' . $drink['price_retail']; ?></div>
-            <div class="<?php print $drink['discount_price_class']; ?> "><?php print'€' . $drink['price_stock']; ?> </div>
+            <div class="<?php print $drink['price_class']; ?>"><?php print $drink['price_retail_text']; ?></div>
+            <div class="<?php print $drink['discount_price_class']; ?> "><?php print $drink['price_stock_text']; ?> </div>
         </div>
     <?php endforeach; ?>
 </body>
