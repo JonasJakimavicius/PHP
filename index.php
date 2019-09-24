@@ -75,7 +75,7 @@ foreach ($drinks as $drink_id => $drink) {
     <h1>Drink catalogue</h1>
     <?php foreach ($drinks as $drink): ?>
         <div class='container'>
-            <img src=<?php print $drink['img']; ?>></img>
+            <img src=<?php print $drink['img']; ?>>
             <div class="price"><?php print '€' . round($drink['price_retail'], 2); ?></div>
             <div class="title"><?php print $drink['name']; ?> </div>
         </div>
