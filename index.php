@@ -1,14 +1,18 @@
 <?php
 
-$x = 3;
-$y = 4;
-
-function sum($x, $y)
+function slot_run($x, $y)
 {
-    return $x + $y;
+    $array = [];
+    for ($i = 0; $i < $x; $i++) {
+        for ($j = 0; $j < $y; $j++) {
+            $array[$i][$j] = rand(0, 1);
+        }
+    }
+    return $array;
 }
 
-$suma = "$x + $y suma: " . sum($x, $y);
+$slot_machine = slot_run(3, 3);
+var_dump($slot_machine);
 
 ?>
 <html>
@@ -16,6 +20,6 @@ $suma = "$x + $y suma: " . sum($x, $y);
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1><?php print $suma; ?></h1>
+
 </body>
 </html>
