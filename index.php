@@ -36,7 +36,22 @@ function get_winning_rows($array)
 }
 
 $winning_rows = get_winning_rows($slot_machine);
-var_dump($winning_rows);
+
+function red_row($winning_rows, $slot_row_id)
+{
+    foreach ($winning_rows as $row_id => $row) {
+        if ($row == $slot_row_id) {
+            return print 'winning-row';
+        }
+    }
+}
+
+function red_row_check($winning_rows, $slot_row_id)
+{
+    if (isset($winning_rows)) {
+        return red_row($winning_rows, $slot_row_id);
+    }
+}
 
 ?>
 <html>
@@ -47,6 +62,10 @@ var_dump($winning_rows);
             display: block;
             width: 130px;
             margin: auto;
+        }
+
+        .winning-row {
+            border: solid green 3px;
         }
 
         .square {
@@ -66,7 +85,7 @@ var_dump($winning_rows);
 </head>
 <body>
     <?php foreach ($slot_machine as $slot_id => $slot): ?>
-        <div class="row">
+        <div class="row <?php red_row_check($winning_rows, $slot_id); ?>">
             <?php foreach ($slot as $square_id => $square): ?>
                 <div class="square color-<?php print $square; ?>"></div>
             <?php endforeach; ?>
