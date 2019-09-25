@@ -1,10 +1,14 @@
 <?php
 
-function add($x, $y)
+$x = 3;
+$y = 4;
+
+function sum($x, $y)
 {
-    $sum = $x + $y;
-    return print "$x + $y suma: $sum";
+    return $x + $y;
 }
+
+$suma = "$x + $y suma: " . sum($x, $y);
 
 ?>
 <html>
@@ -12,6 +16,6 @@ function add($x, $y)
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1><?php add(8, 3); ?></h1>
+    <h1><?php print $suma; ?></h1>
 </body>
 </html>
