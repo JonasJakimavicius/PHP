@@ -13,6 +13,31 @@ function slot_run($x, $y)
 
 $slot_machine = slot_run(3, 3);
 
+function get_winning_rows($array)
+{
+    foreach ($array as $row_id => $row) {
+        $array_length = count($array);
+        $win = 0;
+        foreach ($row as $slot_id => $slot) {
+
+            if ($slot === 1) {
+                $win++;
+            }
+
+            if ($win == $array_length) {
+                $winning_rows[] = $row_id;
+            }
+
+        }
+    }
+    if (isset($winning_rows)) {
+        return $winning_rows;
+    }
+}
+
+$winning_rows = get_winning_rows($slot_machine);
+var_dump($winning_rows);
+
 ?>
 <html>
 <head>
