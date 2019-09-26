@@ -1,95 +1,88 @@
 <?php
 
-function slot_run($x, $y)
+$zodynas =
+    [
+        'bala',
+        'traalal',
+        'mano' =>
+            [
+                'balalaika',
+                'tralialia',
+                'bama' =>
+                    [
+                        'dama',
+                        'rama',
+                        'ruta',
+
+                    ]
+
+            ],
+
+    ];
+
+
+
+function array_flatten($array)
 {
-    $array = [];
-    for ($i = 0; $i < $x; $i++) {
-        for ($j = 0; $j < $y; $j++) {
-            $array[$i][$j] = rand(0, 1);
+    if (!is_array($array)) {
+        return FALSE;
+    }
+    $result = [];
+    foreach ($array as $key => $value) {
+        if (is_array($value)) {
+            $result = array_merge($result, array_flatten($value));
+        } else {
+            $result[$key] = $value;
         }
     }
-    return $array;
+
+    return $result;
+
 }
 
-$slot_machine = slot_run(3, 3);
+$array_flatten = array_flatten($zodynas);
+var_dump($array_flatten);
 
-function get_winning_rows($array)
+function print_all($array)
 {
-    foreach ($array as $row_id => $row) {
-        $array_length = count($array);
-        $win = 0;
-        foreach ($row as $slot_id => $slot) {
-
-            if ($slot === 1) {
-                $win++;
-            }
-
-            if ($win == $array_length) {
-                $winning_rows[] = $row_id;
-            }
-
-        }
-    }
-    if (isset($winning_rows)) {
-        return $winning_rows;
-    }
-}
-
-$winning_rows = get_winning_rows($slot_machine);
-
-function red_row($winning_rows, $slot_row_id)
-{
-    foreach ($winning_rows as $row_id => $row) {
-        if ($row == $slot_row_id) {
-            return print 'winning-row';
+    $count = count($array) - 1;
+    for ($i = 0; $i <= $count; $i++) {
+        if ($i != $count) {
+            print $array[$i] . ',';
+        } else {
+            print $array[$i] . '.';
         }
     }
 }
 
-function red_row_check($winning_rows, $slot_row_id)
-{
-    if (isset($winning_rows)) {
-        return red_row($winning_rows, $slot_row_id);
-    }
-}
+$print_all = print_all($array_flatten);
 
-?>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <style>
-        .row {
-            display: block;
-            width: 130px;
-            margin: auto;
-        }
 
-        .winning-row {
-            border: solid green 3px;
-        }
 
-        .square {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-        }
+/*
+ * Funkcija, kuri isspausdina visus masyvo elementus nepriklausomai nuo masyvo gylio
+ * */
 
-        .color-0 {
-            background-color: blue;
-        }
 
-        .color-1 {
-            background-color: red;
-        }
-    </style>
-</head>
-<body>
-    <?php foreach ($slot_machine as $slot_id => $slot): ?>
-        <div class="row <?php red_row_check($winning_rows, $slot_id); ?>">
-            <?php foreach ($slot as $square_id => $square): ?>
-                <div class="square color-<?php print $square; ?>"></div>
-            <?php endforeach; ?>
-        </div>
-    <?php endforeach; ?>
-</body>
-</html>
+//function printAll($array)
+//{
+//    if (!is_array($array)) {
+//        print $array . ', ';
+//        return;
+//    }
+//
+//    foreach ($array as $v_id => $v) {
+//        printAll($v);
+//
+//    }
+//}
+
+//
+//var_dump( $array);
+
+
+//$print_all = printAll($zodynas);
+
+
+
+
