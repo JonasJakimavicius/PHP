@@ -8,5 +8,13 @@ for ($i = 0; $i < 5; $i++) {
 }
 
 
-$sheeps[3]='trasas';
+foreach ($sheeps as $i => $sheep) {
+
+    unset($sheeps[$i]);
+    $sheeps[$i] = $sheep;
+
+}
+
+
+$sheeps[2] = 'shsshhhshs';
 var_dump($sheeps);
