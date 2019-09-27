@@ -1,18 +1,20 @@
 <?php
 
-$letters_array = ['a', 'b', 's', 'x', 'x', 'b', 's', 'a', 's','e'];
+$letters_array = ['a', 'b', 's', 'x', 'x', 'b', 's', 'a', 's', 'e'];
 
-function count_values($array, $letter)
+$val_from = 'a';
+$val_to = 'x';
+
+function change_values(&$array, &$val_from, &$val_to)
 {
-    $result = 0;
-    foreach ($array as $value) {
-        if ($value === $letter) {
-            $result++;
+    foreach ($array as &$value) {
+        if ($value == $val_from) {
+            $value = $val_to;
         }
     }
-    return $result;
 }
 
-$letter='e';
 
-print count_values($letters_array, $letter);
+print change_values($letters_array, $val_from, $val_to);
+
+var_dump($letters_array);
