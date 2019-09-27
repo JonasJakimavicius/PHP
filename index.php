@@ -1,20 +1,18 @@
 <?php
 
-$sheeps = ['bleee'];
+$letters_array = ['a', 'b', 's', 'x', 'x', 'b', 's', 'a', 's','e'];
 
-//for'as  su reference
-for ($i = 0; $i < 5; $i++) {
-    $sheeps[] =& $sheeps[$i];
+function count_values($array, $letter)
+{
+    $result = 0;
+    foreach ($array as $value) {
+        if ($value === $letter) {
+            $result++;
+        }
+    }
+    return $result;
 }
 
+$letter='e';
 
-foreach ($sheeps as $i => $sheep) {
-
-    unset($sheeps[$i]);
-    $sheeps[$i] = $sheep;
-
-}
-
-
-$sheeps[2] = 'shsshhhshs';
-var_dump($sheeps);
+print count_values($letters_array, $letter);
