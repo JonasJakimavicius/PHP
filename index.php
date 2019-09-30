@@ -7,7 +7,11 @@ function square($x)
 }
 
 if (isset($_POST['submit'])) {
-    $atsakymas = 'Atsakymas: ' . square($_POST['variable']);
+    if (is_numeric($_POST['variable'])) {
+        $atsakymas = 'Atsakymas: ' . square($_POST['variable']);
+    } else{
+        $atsakymas='Įrašykite skaičių';
+    }
 }
 
 ?>
@@ -17,7 +21,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <form method="post">
-        <input type="number" name="variable" required>
+        <input type="number" name="variable">
         <input type="submit" name="submit">
     </form>
     <h1><?php isset($atsakymas) ? print $atsakymas : false; ?></h1>
