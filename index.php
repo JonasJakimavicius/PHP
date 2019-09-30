@@ -1,17 +1,12 @@
 <?php
 
 var_dump($_POST);
-function square($x)
-{
-    return $x ** 2;
-}
+
+$button_number = 0;
 
 if (isset($_POST['submit'])) {
-    if (is_numeric($_POST['variable'])) {
-        $atsakymas = 'Atsakymas: ' . square($_POST['variable']);
-    } else{
-        $atsakymas='Įrašykite skaičių';
-    }
+    $button_number = $_POST['submit'];
+    $button_number++;
 }
 
 ?>
@@ -21,9 +16,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <form method="post">
-        <input type="number" name="variable">
-        <input type="submit" name="submit">
+        <input type="submit" name="submit" value="<?php print $button_number; ?>">
     </form>
-    <h1><?php isset($atsakymas) ? print $atsakymas : false; ?></h1>
 </body>
 </html>
