@@ -5,8 +5,8 @@ function square($x)
     return $x ** 2;
 }
 
-if (isset($_POST)) {
-    print 'Atsakymas: ' .  square($_POST['variable']);
+ if (isset($_POST)) {
+     $atsakymas= 'Atsakymas: ' . square($_POST['variable']);
 }
 
 ?>
@@ -19,5 +19,6 @@ if (isset($_POST)) {
         <input type="number" name="variable">
         <input type="submit">
     </form>
+    <h1><?php print $atsakymas;?></h1>
 </body>
 </html>
