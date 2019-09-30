@@ -1,12 +1,13 @@
 <?php
 
+var_dump($_POST);
 function square($x)
 {
     return $x ** 2;
 }
 
- if (isset($_POST)) {
-     $atsakymas= 'Atsakymas: ' . square($_POST['variable']);
+if (isset($_POST['submit'])) {
+    $atsakymas = 'Atsakymas: ' . square($_POST['variable']);
 }
 
 ?>
@@ -16,9 +17,9 @@ function square($x)
 </head>
 <body>
     <form method="post">
-        <input type="number" name="variable">
-        <input type="submit">
+        <input type="number" name="variable" required>
+        <input type="submit" name="submit">
     </form>
-    <h1><?php print $atsakymas;?></h1>
+    <h1><?php isset($atsakymas) ? print $atsakymas : false; ?></h1>
 </body>
 </html>
