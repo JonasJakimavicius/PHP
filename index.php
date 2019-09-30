@@ -1,20 +1,23 @@
 <?php
 
-$letters_array = ['a', 'b', 's', 'x', 'x', 'b', 's', 'a', 's', 'e'];
-
-$val_from = 'a';
-$val_to = 'x';
-
-function change_values(&$array, &$val_from, &$val_to)
+function square($x)
 {
-    foreach ($array as &$value) {
-        if ($value == $val_from) {
-            $value = $val_to;
-        }
-    }
+    return $x ** 2;
 }
 
+if (isset($_POST)) {
+    print 'Atsakymas: ' .  square($_POST['variable']);
+}
 
-print change_values($letters_array, $val_from, $val_to);
-
-var_dump($letters_array);
+?>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form method="post">
+        <input type="number" name="variable">
+        <input type="submit">
+    </form>
+</body>
+</html>
