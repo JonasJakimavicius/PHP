@@ -13,110 +13,108 @@ $form =
             [
                 'email' =>
                     [
+                        'type' => 'email',
+                        'label' => 'E-mail',
                         'attr' =>
                             [
-                                'type' => 'email',
                                 'placeholder' => 'Email',
                             ],
-                        'extra' =>
+                        'validate' =>
                             [
-                                'label' => 'E-mail',
+                                'validate_not_empty',
+
                             ],
-                        'error' => 'Klaida, nera pasto!',
-                        'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
                     ],
                 'vardas' =>
                     [
+                        'type' => 'text',
+                        'label' => 'Vardas',
                         'attr' =>
                             [
-                                'type' => 'text',
                                 'placeholder' => 'Name',
                             ],
-                        'extra' =>
+
+                        'validate' =>
                             [
-                                'label' => 'Vardas',
+                                'validate_not_empty',
 
                             ],
-                        'error' => 'Klaida, nera vardo!',
-                        'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+                    ],
+                'age' =>
+                    [
+                        'type' => 'number',
+                        'label' => 'Age',
+                        'attr' =>
+                            [
+                                'placeholder' => 'Age',
+                            ],
+                        'validate' =>
+                            [
+                                'validate_is_number',
+                                'validate_not_empty',
+                                'validate_is_positive',
+                                'validate_max_100',
+
+                            ],
                     ],
                 'name' =>
                     [
+                        'type' => 'select',
+                        'label' => 'vardas',
                         'attr' =>
                             [
-                                'type' => 'select',
                                 'placeholder' => 'Name',
-
                             ],
-                        'extra' =>
-                            [
-                                'options' =>
-                                    [
-                                        'tadas' => 'Tadas',
-                                        'aurimas' => 'Aurimas',
-                                        'dainius' => 'Dainius',
 
-                                    ],
-                                'label' => 'vardas',
-                                'error' => 'Klaida, nera name!',
-                                'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+                        'options' =>
+                            [
+                                'tadas' => 'Tadas',
+                                'aurimas' => 'Aurimas',
+                                'dainius' => 'Dainius',
+                            ],
+
+                        'validate' =>
+                            [
+                                'validate_not_empty',
                             ],
                     ],
                 'surname' =>
                     [
+                        'type' => 'text',
+                        'label' => 'Pavardė',
                         'attr' =>
                             [
-                                'type' => 'text',
                                 'placeholder' => 'Surname',
+                            ],
+                        'validate' =>
+                            [
+                                'validate_not_empty',
 
                             ],
-                        'extra' =>
-                            [
-                                'label' => 'Pavardė',
-                            ],
-                        'error' => 'Klaida, nera pavardes!',
-                        'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+
                     ],
             ],
         'buttons' =>
             [
                 'button' =>
                     [
-
                         'type' => 'submit',
-
-
+                        'value' => 'register'
                     ],
             ],
         'message' => 'Message!',
+        'callbacks' => [
+            'success' => 'form_success',
+            'fail' => 'form_fail',
+        ],
 
     ];
 
 require('functions/functions.php');
-// sigito kodas
 
-function get_filtered_input($array)
-{
-    $filter_parameters = [];
-
-    foreach ($array['fields'] as $idx => $inner_array) { // jei true, su tuo masyvu, daryk tai:
-        $filter_parameters[$idx] = $inner_array['filter'] ?? FILTER_SANITIZE_SPECIAL_CHARS; // ideda filtra (konstantą) kokia nurodyta masyve.
-    };
-    return filter_input_array(INPUT_POST, $filter_parameters); // sitoj silutej vyskta sanitation pagal default f-ja
-}
-
-$filtered_input = get_filtered_input($form);
-var_dump($filtered_input);
-
-foreach ($form['fields'] as $inner_array_idx => &$inner_array) { // cia padaro, jog po submit paspaudimo, i inputa grazina isvalyta rezultata, aks buvo ivesta.
-    $inner_array['attr']['value'] = $filtered_input[$inner_array_idx];
-
-    if ($inner_array['attr']['value'] === '') { //jeigu $form'oje nera 'error', tai iraso toki elementa su nurodyta value.
-        $inner_array['error'] = 'klaida';
-    }
+if (!empty($filtered_input)) {
+    $success = validate_form($form,$filtered_input );
 };
-
-// sigito kodo pabaiga
 
 ?>
 <html lang="en">
@@ -125,6 +123,6 @@ foreach ($form['fields'] as $inner_array_idx => &$inner_array) { // cia padaro, 
     <title>Formos generavimas</title>
 </head>
 <body>
-    <?php require('templates/form.tpl.php'); ?>
+<?php require('templates/form.tpl.php'); ?>
 </body>
 </html>
