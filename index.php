@@ -2,6 +2,7 @@
 
 require('functions/form/core.php');
 require('functions/html/generators.php');
+require ('functions/json/json_transform.php');
 
 $form = [
     'attr' => [
@@ -53,7 +54,7 @@ if (!empty($filtered_input)) {
 
 function form_success($filtered_input)
 {
-    array_to_file($filtered_input, 'masyvas.txt');
+    array_to_file('masyvas.txt', $filtered_input);
 }
 
 function form_fail()
@@ -61,16 +62,7 @@ function form_fail()
     var_dump('Retard alert');
 }
 
-function array_to_file($array, $file_name)
-{
-    $data = json_encode($array);
-    $file = file_put_contents($file_name, $data);
-    if ($file === false) {
-        return false;
-    }
-    return true;
 
-}
 
 ?>
 <html lang="en">
