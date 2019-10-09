@@ -1,70 +1,64 @@
 <?php
 
-$form =
-    [
-        'attr' =>
-            [
-                'action' => 'index.php',
-                'method' => 'post',
-                'class' => 'my-form',
-                'id' => 'login-form',
+$form = [
+    'attr' => [
+        'action' => 'index.php',
+        'method' => 'post',
+        'class' => 'my-form',
+        'id' => 'login-form',
+    ],
+    'fields' => [
+        'y' => [
+            'type' => 'number',
+            'label' => 'num-y',
+            'attr' => [
+                'placeholder' => 'Number',
             ],
-        'fields' =>
-            [
-                'y' =>
-                    [
-                        'type' => 'number',
-                        'label' => 'num-y',
-                        'attr' =>
-                            [
-                                'placeholder' => 'Number',
-                            ],
-                        'validate' =>
-                            [
-                                'validate_not_empty',
-                                'validate_is_number',
-                            ],
-                    ],
-                'x' =>
-                    [
-                        'type' => 'number',
-                        'label' => 'num-x',
-                        'attr' =>
-                            [
-                                'placeholder' => 'Number',
-                            ],
-
-                        'validate' =>
-                            [
-                                'validate_not_empty',
-                                'validate_is_number',
-                            ],
-                    ],
-
-
+            'validate' => [
+                'validate_not_empty',
+                'validate_is_number',
             ],
-        'buttons' =>
-            [
-                'button' =>
-                    [
-                        'type' => 'submit',
-                        'value' => 'register'
-                    ],
+        ],
+        'x' => [
+            'type' => 'number',
+            'label' => 'num-x',
+            'attr' => [
+                'placeholder' => 'Number',
             ],
-
-        'callbacks' =>
-            [
-                'success' => 'form_success',
-                'fail' => 'form_fail',
+            'validate' => [
+                'validate_not_empty',
+                'validate_is_number',
             ],
-
-    ];
-
-require('functions/functions.php');
+        ],
+    ],
+    'buttons' => [
+        'button' => [
+            'type' => 'submit',
+            'value' => 'register'
+        ],
+    ],
+    'callbacks' => [
+        'success' => 'form_success',
+        'fail' => 'form_fail',
+    ],
+];
+require('functions/form/core.php');
+require('functions/html/generators.php');
 
 if (!empty($filtered_input)) {
     $success = validate_form($form, $filtered_input);
 };
+
+function form_success($filtered_input)
+{
+    var_dump($filtered_input['x'] + $filtered_input['y']);
+
+}
+
+function form_fail($filtered_input, $form)
+{
+    var_dump('Klaida');
+}
 
 ?>
 <html lang="en">

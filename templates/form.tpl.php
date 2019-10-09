@@ -20,7 +20,7 @@
 
                     <?php else: ?>
 
-                        <input <?php print html_attr(['name' => $field_id,'type'=>$field['type']] + $field['attr'] ?? []); ?>>
+                        <input <?php print html_attr(['name' => $field_id, 'type' => $field['type']] + $field['attr'] ?? []); ?>>
                     <?php endif; ?>
 
                     <?php if (isset($field['error'])): ?>
