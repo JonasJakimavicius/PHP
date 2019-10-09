@@ -53,7 +53,7 @@ if (!empty($filtered_input)) {
 
 function form_success($filtered_input)
 {
-    var_dump('You in!');
+    array_to_file($filtered_input, 'masyvas.txt');
 }
 
 function form_fail()
@@ -67,11 +67,9 @@ function array_to_file($array, $file_name)
     $file = file_put_contents($file_name, $data);
     if ($file === false) {
         return false;
-    } elseif ($file == 0) {
-        return true;
-    } else {
-        return true;
     }
+    return true;
+
 }
 
 ?>
