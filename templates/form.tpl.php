@@ -37,18 +37,17 @@
             </div>
         <?php endif; ?>
 
-
-
-
         <?php if (isset ($form['buttons'])): ?>
             <div class="buttons-container">
 
                 <?php foreach ($form['buttons'] ?? [] as $button_id => $button): ?>
                     <button <?php print html_attr($button); ?> ><?php print $form['buttons']['button']['value']; ?></button>
                 <?php endforeach; ?>
+
                 <?php if (isset($form['message'])): ?>
                     <div><?php print $form['message']; ?></div>
                 <?php endif; ?>
+
             </div>
         <?php endif; ?>
     </form>

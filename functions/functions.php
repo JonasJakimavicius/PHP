@@ -69,6 +69,7 @@ function get_filtered_input($array)
 }
 
 $filtered_input = get_filtered_input($form);
+
 function validate_form(&$form, $filtered_input)
 {
     $success = true;
@@ -97,13 +98,15 @@ function validate_form(&$form, $filtered_input)
     return $success;
 }
 
-
-function form_success() {
+function form_success()
+{
     if (!empty($_POST)) {
         var_dump('win');
     }
 }
-function form_fail() {
+
+function form_fail()
+{
     var_dump('fail');
 }
 
