@@ -68,7 +68,7 @@ function array_to_file($array, $file_name)
     if ($file === false) {
         return false;
     } elseif ($file == 0) {
-        return false;
+        return true;
     } else {
         return true;
     }
