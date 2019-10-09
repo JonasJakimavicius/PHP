@@ -9,12 +9,8 @@ function get_filtered_input($array)
     foreach ($array['fields'] as $field_key => $field) { // jei true, su tuo masyvu, daryk tai:print $inner_array['filter'];
         $filter_parameters[$field_key] = $field['filter'] ?? FILTER_SANITIZE_SPECIAL_CHARS; // ideda filtra (konstantą) kokia nurodyta masyve.
     };
-
     return filter_input_array(INPUT_POST, $filter_parameters); // sitoj eilutej vyskta sanitation pagal default f-ja
 }
-
-$filtered_input = get_filtered_input($form);
-
 
 function validate_form(&$form, $filtered_input)
 {

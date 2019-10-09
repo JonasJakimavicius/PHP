@@ -1,5 +1,8 @@
 <?php
 
+require('functions/form/core.php');
+require('functions/html/generators.php');
+
 $form = [
     'attr' => [
         'action' => 'index.php',
@@ -26,7 +29,7 @@ $form = [
             ],
             'validate' => [
                 'validate_not_empty',
-               'validate_password',
+                'validate_password',
             ],
         ],
     ],
@@ -42,8 +45,7 @@ $form = [
     ],
 ];
 
-require('functions/form/core.php');
-require('functions/html/generators.php');
+$filtered_input = get_filtered_input($form);
 
 if (!empty($filtered_input)) {
     $success = validate_form($form, $filtered_input);
@@ -52,12 +54,26 @@ if (!empty($filtered_input)) {
 function form_success($filtered_input)
 {
     var_dump('You in!');
-
 }
 
 function form_fail()
 {
     var_dump('Retard alert');
+}
+
+function array_to_file($array, $file_name)
+{
+    $data = json_encode($array);
+    $file = file_put_contents($file_name, $data);
+    if ($file === false) {
+        return false;
+    } elseif ($file == 0) {
+
+        return false;
+    } else {
+
+        return true;
+    }
 }
 
 ?>
