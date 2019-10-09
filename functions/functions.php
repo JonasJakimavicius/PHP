@@ -98,15 +98,15 @@ function validate_form(&$form, $filtered_input)
     return $success;
 }
 
-function form_success()
+function form_success(&$form)
 {
     if (!empty($_POST)) {
-        var_dump('win');
+        var_dump($form['x'] + $form['y']);
     }
 }
 
 function form_fail()
 {
-    var_dump('fail');
+    var_dump('Klaida');
 }
 

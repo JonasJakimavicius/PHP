@@ -11,88 +11,37 @@ $form =
             ],
         'fields' =>
             [
-                'email' =>
-                    [
-                        'type' => 'email',
-                        'label' => 'E-mail',
-                        'attr' =>
-                            [
-                                'placeholder' => 'Email',
-                            ],
-                        'validate' =>
-                            [
-                                'validate_not_empty',
-
-                            ],
-                    ],
-                'vardas' =>
-                    [
-                        'type' => 'text',
-                        'label' => 'Vardas',
-                        'attr' =>
-                            [
-                                'placeholder' => 'Name',
-                            ],
-
-                        'validate' =>
-                            [
-                                'validate_not_empty',
-
-                            ],
-                    ],
-                'age' =>
+                'y' =>
                     [
                         'type' => 'number',
-                        'label' => 'Age',
+                        'label' => 'num-y',
                         'attr' =>
                             [
-                                'placeholder' => 'Age',
+                                'placeholder' => 'Number',
                             ],
                         'validate' =>
                             [
+                                'validate_not_empty',
                                 'validate_is_number',
-                                'validate_not_empty',
-                                'validate_is_positive',
-                                'validate_max_100',
-
                             ],
                     ],
-                'name' =>
+                'x' =>
                     [
-                        'type' => 'select',
-                        'label' => 'vardas',
+                        'type' => 'number',
+                        'label' => 'num-x',
                         'attr' =>
                             [
-                                'placeholder' => 'Name',
-                            ],
-
-                        'options' =>
-                            [
-                                'tadas' => 'Tadas',
-                                'aurimas' => 'Aurimas',
-                                'dainius' => 'Dainius',
+                                'placeholder' => 'Number',
                             ],
 
                         'validate' =>
                             [
                                 'validate_not_empty',
+                                'validate_is_number',
                             ],
                     ],
-                'surname' =>
-                    [
-                        'type' => 'text',
-                        'label' => 'Pavardė',
-                        'attr' =>
-                            [
-                                'placeholder' => 'Surname',
-                            ],
-                        'validate' =>
-                            [
-                                'validate_not_empty',
 
-                            ],
 
-                    ],
             ],
         'buttons' =>
             [
@@ -102,25 +51,26 @@ $form =
                         'value' => 'register'
                     ],
             ],
-        'message' => 'Message!',
-        'callbacks' => [
-            'success' => 'form_success',
-            'fail' => 'form_fail',
-        ],
+
+        'callbacks' =>
+            [
+                'success' => 'form_success',
+                'fail' => 'form_fail',
+            ],
 
     ];
 
 require('functions/functions.php');
 
 if (!empty($filtered_input)) {
-    $success = validate_form($form,$filtered_input );
+    $success = validate_form($form, $filtered_input);
 };
 
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Formos generavimas</title>
+    <title>Pirma uzduotis</title>
 </head>
 <body>
 <?php require('templates/form.tpl.php'); ?>
