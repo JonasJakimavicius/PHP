@@ -19,7 +19,6 @@
                         </select>
 
                     <?php else: ?>
-
                         <input <?php print html_attr(['name' => $field_id, 'type' => $field['type']] + $field['attr'] ?? []); ?>>
                     <?php endif; ?>
 
@@ -27,11 +26,9 @@
                         <div> <?php print $field['error']; ?></div>
                     <?php endif; ?>
 
-
                     <?php if (isset($field['label'])) : ?>
                         </label>
                     <?php endif; ?>
-
 
                 <?php endforeach; ?>
             </div>

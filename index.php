@@ -8,26 +8,25 @@ $form = [
         'id' => 'login-form',
     ],
     'fields' => [
-        'y' => [
-            'type' => 'number',
-            'label' => 'num-y',
+        'nickname' => [
+            'type' => 'text',
+            'label' => 'nickname',
             'attr' => [
-                'placeholder' => 'Number',
+                'placeholder' => 'Nickname',
             ],
             'validate' => [
                 'validate_not_empty',
-                'validate_is_number',
             ],
         ],
-        'x' => [
-            'type' => 'number',
-            'label' => 'num-x',
+        'password' => [
+            'type' => 'password',
+            'label' => 'password',
             'attr' => [
-                'placeholder' => 'Number',
+                'placeholder' => 'Password',
             ],
             'validate' => [
                 'validate_not_empty',
-                'validate_is_number',
+               'validate_password',
             ],
         ],
     ],
@@ -42,6 +41,7 @@ $form = [
         'fail' => 'form_fail',
     ],
 ];
+
 require('functions/form/core.php');
 require('functions/html/generators.php');
 
@@ -51,13 +51,13 @@ if (!empty($filtered_input)) {
 
 function form_success($filtered_input)
 {
-    var_dump($filtered_input['x'] + $filtered_input['y']);
+    var_dump('You in!');
 
 }
 
-function form_fail($filtered_input, $form)
+function form_fail()
 {
-    var_dump('Klaida');
+    var_dump('Retard alert');
 }
 
 ?>
