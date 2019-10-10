@@ -2,7 +2,7 @@
 
 require('functions/form/core.php');
 require('functions/html/generators.php');
-require('functions/json/json_transform.php');
+require('functions/file/json_transform.php');
 
 $form = [
     'attr' => [
@@ -62,6 +62,7 @@ function update_file($filtered_input)
 function form_success($filtered_input)
 {
     update_file($filtered_input);
+    setcookie('kukis', 'pilde', time() + 5, '/');
 }
 
 function form_fail()
@@ -70,7 +71,7 @@ function form_fail()
 }
 
 $users_info = is_array(file_to_array('data/masyvas.txt')) ? file_to_array('data/masyvas.txt') : [];
-setcookie('kukis', 'cookiedata', time() + 60, '/');
+
 
 ?>
 <html lang="en">
