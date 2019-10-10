@@ -54,9 +54,9 @@ if (!empty($filtered_input)) {
 
 function update_file($filtered_input)
 {
-    $array = file_to_array('masyvas.txt');
+    $array = file_to_array('data/masyvas.txt');
     $array[] = $filtered_input;
-    array_to_file('masyvas.txt', $array);
+    array_to_file('data/masyvas.txt', $array);
 }
 
 function form_success($filtered_input)
@@ -69,7 +69,7 @@ function form_fail()
     var_dump('Retard alert');
 }
 
-$users_info = is_array(file_to_array('masyvas.txt')) ? file_to_array('masyvas.txt') : [];
+$users_info = is_array(file_to_array('data/masyvas.txt')) ? file_to_array('data/masyvas.txt') : [];
 
 ?>
 <html lang="en">
@@ -80,7 +80,7 @@ $users_info = is_array(file_to_array('masyvas.txt')) ? file_to_array('masyvas.tx
 <body>
 <?php require('templates/form.tpl.php'); ?>
 <?php foreach ($users_info as $user): ?>
-    <?php print "Nickname: {$user['nickname']} Password: {$user['password']}"; ?>
+    <div><?php print "Nickname: {$user['nickname']} Password: {$user['password']}"; ?></div>
     </br>
 <?php endforeach; ?>
 </body>
