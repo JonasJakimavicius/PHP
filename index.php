@@ -70,6 +70,7 @@ function form_fail()
 }
 
 $users_info = is_array(file_to_array('data/masyvas.txt')) ? file_to_array('data/masyvas.txt') : [];
+setcookie('kukis', 'cookiedata', time() + 60, '/');
 
 ?>
 <html lang="en">
@@ -78,10 +79,17 @@ $users_info = is_array(file_to_array('data/masyvas.txt')) ? file_to_array('data/
     <title>Failu spausdinimas</title>
 </head>
 <body>
-<?php require('templates/form.tpl.php'); ?>
-<?php foreach ($users_info as $user): ?>
-    <div><?php print "Nickname: {$user['nickname']} Password: {$user['password']}"; ?></div>
-    </br>
-<?php endforeach; ?>
+<?php if (!isset($_COOKIE['kukis'])): ?>
+    <?php require('templates/form.tpl.php'); ?>
+<?php else: ?>
+    <table>
+        <?php foreach ($users_info as $user): ?>
+            <tr>
+                <td><?php print "Nickname: {$user['nickname']} Password: {$user['password']}"; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php endif; ?>
+
 </body>
 </html>
