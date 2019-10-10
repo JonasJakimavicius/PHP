@@ -2,7 +2,7 @@
 
 require('functions/form/core.php');
 require('functions/html/generators.php');
-require ('functions/json/json_transform.php');
+require('functions/json/json_transform.php');
 
 $form = [
     'attr' => [
@@ -52,9 +52,16 @@ if (!empty($filtered_input)) {
     $success = validate_form($form, $filtered_input);
 };
 
+function update_file($filtered_input)
+{
+    $array = file_to_array('masyvas.txt');
+    $array[] = $filtered_input;
+    array_to_file('masyvas.txt', $array);
+}
+
 function form_success($filtered_input)
 {
-    array_to_file('masyvas.txt', $filtered_input);
+    update_file($filtered_input);
 }
 
 function form_fail()
@@ -62,7 +69,7 @@ function form_fail()
     var_dump('Retard alert');
 }
 
-
+$users_info = file_to_array('masyvas.txt');
 
 ?>
 <html lang="en">
@@ -72,5 +79,9 @@ function form_fail()
 </head>
 <body>
 <?php require('templates/form.tpl.php'); ?>
+<?php foreach ($users_info as $user): ?>
+    <?php print "Nickname: {$user['nickname']} Password: {$user['password']}"; ?>
+    </br>
+<?php endforeach; ?>
 </body>
 </html>
