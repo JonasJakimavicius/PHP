@@ -3,14 +3,14 @@
 function array_to_file($file_name, $array)
 {
     if (!file_exists($file_name)) {
-        $masyvas[] = $array;
-        $data = json_encode($masyvas);
+        $new_array[] = $array;
+        $data = json_encode($new_array);
         $file = file_put_contents($file_name, $data);
         return $file;
     } else {
-        $array2 = file_to_array($file_name);
-        $array2[] = $array;
-        $data = json_encode($array2);
+        $array_old = file_to_array($file_name);
+        $array_old[] = $array;
+        $data = json_encode($array_old);
         $file = file_put_contents($file_name, $data);
         return $file;
     }
