@@ -69,13 +69,13 @@ function form_fail()
     var_dump('Retard alert');
 }
 
-$users_info = file_to_array('masyvas.txt');
+$users_info = is_array(file_to_array('masyvas.txt')) ? file_to_array('masyvas.txt') : [];
 
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pirma uzduotis</title>
+    <title>Failu spausdinimas</title>
 </head>
 <body>
 <?php require('templates/form.tpl.php'); ?>
