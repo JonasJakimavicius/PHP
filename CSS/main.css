@@ -1,0 +1,32 @@
+form {
+    display: block;
+    width: 300px;
+    margin: auto;
+}
+
+.title {
+    display: block;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
+}
+
+button {
+    width: 190px;
+    margin: auto;
+    display: block;
+    background-color: #128070;
+}
+
+input {
+    width: 190px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+}
+body{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,87,9,1) 35%, rgba(0,212,255,1) 100%);
+}

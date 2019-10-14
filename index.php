@@ -3,6 +3,7 @@
 require('functions/form/core.php');
 require('functions/html/generators.php');
 require('functions/file.php');
+
 $form = [
     'attr' => [
         'action' => 'index.php',
@@ -13,7 +14,6 @@ $form = [
     'fields' => [
         'nickname' => [
             'type' => 'text',
-            'label' => 'team_name',
             'attr' => [
                 'placeholder' => 'Team name',
             ],
@@ -44,9 +44,10 @@ if (!empty($filtered_input)) {
 <head>
     <meta charset="UTF-8">
     <title>PZ2ABALLAS</title>
+    <link rel="stylesheet" href="CSS/main.css">
 </head>
 <body>
-<h2>Register</h2>
+<h2 class="title">Register</h2>
 <?php require('templates/form.tpl.php'); ?>
 </body>
 </html>
