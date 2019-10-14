@@ -4,13 +4,19 @@ require('functions/form/core.php');
 require('functions/html/generators.php');
 require('functions/file.php');
 
+function update_file($filtered_input)
+{
+    $array = file_to_array('data/teams.txt');
+    $array[] = $filtered_input;
+    array_to_file('data/teams.txt', $array);
+}
+
+function form_success($filtered_input)
+{
+    update_file($filtered_input);
+}
+
 $form = [
-    'attr' => [
-        'action' => 'index.php',
-        'method' => 'post',
-        'class' => 'my-form',
-        'id' => 'login-form',
-    ],
     'fields' => [
         'nickname' => [
             'type' => 'text',
@@ -72,9 +78,9 @@ if (!empty($filtered_input)) {
     <link rel="stylesheet" href="CSS/main.css">
 </head>
 <body>
-<div class="container">
-    <h2 class="title">Register</h2>
-    <?php require('templates/form.tpl.php'); ?>
-</div>
+    <div class="container">
+        <h2 class="title">Register</h2>
+        <?php require('templates/form.tpl.php'); ?>
+    </div>
 </body>
 </html>
