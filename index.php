@@ -41,6 +41,12 @@ $team = [
             'score' => '5',
         ],
     ],
+    'velniai2' => [
+        'tadas' => [
+            'nickname' => 'Blabla',
+            'score' => '5',
+        ],
+    ],
 ];
 
 $filtered_input = get_filtered_input($form);
