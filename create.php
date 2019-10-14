@@ -35,32 +35,33 @@ $form = [
 ];
 
 $teams = [
-    'team_name' => 'lopai',
-    'players' => [
-        ['nickname' => 'lopas',
-            'score' => '5',],
-        ['nickname' => 'lopas',
-            'score' => '5',],
-        ['nickname' => 'lopas',
-            'score' => '5',],
-    ]
+    [
+        'team_name' => 'lopai',
+        'players' => [
+            ['nickname' => 'lopas',
+                'score' => '5',],
+            ['nickname' => 'lopas',
+                'score' => '5',],
+            ['nickname' => 'lopas',
+                'score' => '5',],
+        ],
+    ],
+    [
+        'team_name' => 'lopai',
+        'players' => [
+            ['nickname' => 'lopas',
+                'score' => '5',],
+            ['nickname' => 'lopas',
+                'score' => '5',],
+            ['nickname' => 'lopas',
+                'score' => '5',],
+        ],
+    ],
 ];
 
 $filtered_input = get_filtered_input($form);
 if (!empty($filtered_input)) {
     $success = validate_form($form, $filtered_input);
-}
-
-function update_file($filtered_input)
-{
-    $array = file_to_array('data/teams.txt');
-    $array[] = $filtered_input;
-    array_to_file('data/teams.txt', $array);
-}
-
-function form_success($filtered_input)
-{
-    update_file($filtered_input);
 }
 
 ?>
