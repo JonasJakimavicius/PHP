@@ -8,9 +8,22 @@ $form = [
     'attr' => [],
     'fields' => [
         'team' => [
+            'type' => 'select',
+            'attr' => [
+
+            ],
+            'options' => [
+
+            ],
+            'validate' => [
+                'validate_not_empty',
+                'validate_team',
+            ],
+        ],
+        'player' => [
             'type' => 'text',
             'attr' => [
-                'placeholder' => 'Team name',
+                'placeholder' => 'Player name',
             ],
             'validate' => [
                 'validate_not_empty',
@@ -21,7 +34,7 @@ $form = [
     'buttons' => [
         'button' => [
             'type' => 'submit',
-            'value' => 'Create'
+            'value' => 'Join'
         ],
     ],
     'callbacks' => [
@@ -30,50 +43,15 @@ $form = [
     ],
 ];
 
-$teams = [
-    [
-        'team_name' => 'lopai',
-        'players' => [
-            ['nickname' => 'lopas',
-                'score' => '5',],
-            ['nickname' => 'lopas',
-                'score' => '5',],
-            ['nickname' => 'lopas',
-                'score' => '5',],
-        ],
-    ],
-    [
-        'team_name' => 'lopai',
-        'players' => [
-            ['nickname' => 'lopas',
-                'score' => '5',],
-            ['nickname' => 'lopas',
-                'score' => '5',],
-            ['nickname' => 'lopas',
-                'score' => '5',],
-        ],
-    ],
-];
 $filtered_input = get_filtered_input($form);
-
 
 if (!empty($filtered_input)) {
     validate_form($form, $filtered_input);
 }
 
-
-function update_file($filtered_input)
-{
-    $filtered_input['players']=[];
-    $array = file_to_array('data/teams.txt');
-    $array[] = $filtered_input;
-    array_to_file('data/teams.txt', $array);
-}
-
 function form_success($filtered_input)
 {
-    update_file($filtered_input);
-    header("Location: join.php");
+    add_player($filtered_input);
 }
 
 function form_fail($filtered_input, &$form)
@@ -81,15 +59,36 @@ function form_fail($filtered_input, &$form)
 
 }
 
+$array = file_to_array('data/teams.txt' );
 
-var_dump(file_to_array('data/teams.txt'));
+foreach ($array as $teams_key => $team) {
+    $form['fields']['team']['options'][] = $team['team'];
+}
 
 
+function add_player($filtered_input)
+{
+    $array = file_to_array('data/teams.txt');
+    $status=true;
+    foreach ($array[$filtered_input['team']]['players'] as $player) {
+        if ($player === $filtered_input['player']) {
+            $status = false;
+        } else {
+            $status = true;
+        }
+    }
+    if ($status) {
+        $array[$filtered_input['team']]['players'][] = $filtered_input['player'];
+        array_to_file('data/teams.txt', $array);
+    }
+}
+
+var_dump($array);
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PZ2ABALLAS</title>
+    <title>PZ2ABALLAS komandos nariai</title>
     <!--    <link rel="stylesheet" href="CSS/main.css">-->
 </head>
 <body>
@@ -98,7 +97,6 @@ var_dump(file_to_array('data/teams.txt'));
         <a href="join.php">Join</a>
     </nav>
     <div class="container">
-        <h2 class="title">Register</h2>
         <?php require('templates/form.tpl.php'); ?>
     </div>
 </body>
