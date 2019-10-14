@@ -34,6 +34,15 @@ $form = [
     ],
 ];
 
+$team = [
+    'velniai' => [
+        'tadas' => [
+            'nickname' => 'Blabla',
+            'score' => '5',
+        ],
+    ],
+];
+
 $filtered_input = get_filtered_input($form);
 if (!empty($filtered_input)) {
     $success = validate_form($form, $filtered_input);
