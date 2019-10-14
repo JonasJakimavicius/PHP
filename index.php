@@ -47,7 +47,9 @@ if (!empty($filtered_input)) {
     <link rel="stylesheet" href="CSS/main.css">
 </head>
 <body>
-<h2 class="title">Register</h2>
-<?php require('templates/form.tpl.php'); ?>
+<div class="container">
+    <h2 class="title">Register</h2>
+    <?php require('templates/form.tpl.php'); ?>
+</div>
 </body>
 </html>

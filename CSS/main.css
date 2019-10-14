@@ -9,24 +9,41 @@ form {
     width: 300px;
     margin: auto;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 300px;
+    font-family: "Comic Sans MS";
+    color: darkred;
+    font-size: 50px;
+
 }
 
 button {
-    width: 190px;
+    width: 300px;
     margin: auto;
     display: block;
     background-color: #128070;
+    border-radius: 30px;
+    color: white;
+    height: 40px;
+    border: none;
+    margin-top: 30px;
+    font-family: "Comic Sans MS";
 }
 
 input {
-    width: 190px;
+    width: 300px;
     display: block;
     margin: auto;
     text-align: center;
     margin-top: 20px;
+    border-radius: 30px;
+    height: 40px;
+    font-family: "Comic Sans MS";
 }
-body{
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,87,9,1) 35%, rgba(0,212,255,1) 100%);
+
+
+body {
+    background-image: url("https://media1.giphy.com/media/13FrpeVH09Zrb2/source.gif");
+    height: 100vh;
+
 }
+
