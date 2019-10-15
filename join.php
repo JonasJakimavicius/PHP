@@ -56,7 +56,6 @@ function form_success($filtered_input)
 
 function form_fail($filtered_input, &$form)
 {
-
 }
 
 $array = file_to_array('data/teams.txt');
@@ -65,19 +64,9 @@ foreach ($array as $teams_key => $team) {
     $form['fields']['team']['options'][] = $team['team'];
 }
 
-
 function add_player($filtered_input)
 {
     $array = file_to_array('data/teams.txt');
-//    $status = true;
-//    foreach ($array[$filtered_input['team']]['players'] as $player) {
-//        if ($player === $filtered_input['player']) {
-//            $status = false;
-//        } else {
-//            $status = true;
-//        }
-//    }
-//    if ($status) {
     if (!in_array($filtered_input['player'], $array[$filtered_input['team']]['players'])) {
         $array[$filtered_input['team']]['players'][] = $filtered_input['player'];
         array_to_file('data/teams.txt', $array);

@@ -56,11 +56,9 @@ $teams = [
 ];
 $filtered_input = get_filtered_input($form);
 
-
 if (!empty($filtered_input)) {
     validate_form($form, $filtered_input);
 }
-
 
 function update_file($filtered_input)
 {
@@ -78,12 +76,7 @@ function form_success($filtered_input)
 
 function form_fail($filtered_input, &$form)
 {
-
 }
-
-
-var_dump(file_to_array('data/teams.txt'));
-
 
 ?>
 <html lang="en">
