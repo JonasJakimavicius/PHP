@@ -15,7 +15,6 @@ function get_filtered_input($array)
 function validate_form(&$form, $filtered_input)
 {
     $success = true;
-
     foreach ($form['fields'] as $field_key => &$field_value) {
         $field_value['attr']['value'] = $filtered_input[$field_key];
 
@@ -26,18 +25,35 @@ function validate_form(&$form, $filtered_input)
                 break;
             }
         }
-        unset($field_value);
-    }
-    if ($success) {
-        if (isset($form['callbacks']['success'])) {
-            $form['callbacks']['success']($filtered_input, $form);
+
+        if ($success) {
+            foreach ($form['validators'] ?? [] as $validator_id => $validator) {
+                if (is_array($validator)) {
+                    $is_valid = $validator_id($filtered_input, $form, $validator);
+                } else {
+                    $is_valid = $validator($filtered_input, $form);
+                }
+                if (!$is_valid) {
+                    $success = false;
+                    break;
+                }
+
+            }
+            if ($success) {
+                if (isset($form['callbacks']['success'])) {
+                    $form['callbacks']['success']($filtered_input, $form);
+
+                }
+            } else {
+                if (isset($form['callbacks']['fail'])) {
+                    $form['callbacks']['fail']($filtered_input, $form);
+
+                }
+            }
+            return $success;
         }
-    } else {
-        if (isset($form['callbacks']['fail'])) {
-            $form['callbacks']['fail']($filtered_input, $form);
-        }
     }
-    return $success;
 }
+
 
 
