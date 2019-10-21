@@ -12,10 +12,10 @@
                     <?php endif; ?>
 
                     <?php if ($field['type'] === 'select'): ?>
-                        <select <?php print html_attr(['name' => $field_id ]+$field['attr']); ?>>
+                        <select <?php print html_attr(['name' => $field_id] + $field['attr']); ?>>
                             <option disabled selected>Pasirink komanda</option>
                             <?php foreach ($field['options'] as $select_value_id => $select_value): ?>
-                                <option value="<?php print $select_value_id; ?>" > <?php print $select_value; ?> </option>
+                                <option value="<?php print $select_value_id; ?>"> <?php print $select_value; ?> </option>
                             <?php endforeach; ?>
                         </select>
 
@@ -27,12 +27,18 @@
                         <div> <?php print $field['error']; ?></div>
                     <?php endif; ?>
 
+
+
                     <?php if (isset($field['label'])) : ?>
                         </label>
                     <?php endif; ?>
 
                 <?php endforeach; ?>
             </div>
+        <?php endif; ?>
+
+        <?php if (isset($form['error'])): ?>
+            <div> <?php print $form['error']; ?></div>
         <?php endif; ?>
 
         <?php if (isset ($form['buttons'])): ?>

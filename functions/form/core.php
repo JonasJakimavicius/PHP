@@ -20,11 +20,13 @@ function validate_form(&$form, $filtered_input)
 
         foreach ($field_value['validate'] ?? [] as $validate) {
             $is_valid = $validate($filtered_input[$field_key], $field_value);
+
             if (!$is_valid) {
                 $success = false;
                 break;
             }
         }
+    }
 
         if ($success) {
             foreach ($form['validators'] ?? [] as $validator_id => $validator) {
@@ -52,7 +54,8 @@ function validate_form(&$form, $filtered_input)
             }
             return $success;
         }
-    }
+
+
 }
 
 

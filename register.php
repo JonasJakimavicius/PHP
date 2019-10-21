@@ -84,7 +84,6 @@ function form_fail($filtered_input, &$form)
 }
 
 
-
 ?>
 <html>
 <head>
